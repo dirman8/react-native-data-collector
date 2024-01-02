@@ -8,6 +8,17 @@
       "expo-router"
     ],
     "name": "react-native-first-project",
-    "slug": "react-native-first-project"
+    "slug": "react-native-first-project",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "b01ad8d0-44ac-4215-9503-ea16340d5160"
+      }
+    },
+    "android": {
+      "package": "com.dirman8.reactnativefirstproject"
+    }
   }
 }
