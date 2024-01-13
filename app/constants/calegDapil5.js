@@ -1,0 +1,273 @@
+// DATA CALON KOTA DAPIL 5
+const PKB = {
+	nomer: 1,
+	nama: "PKB",
+	dapil: "DAPIL 5",
+	1: "MINUN LATIF",
+	2: "FARAH FATATY, S.H., M.Kn.",
+	3: "PUSPA INDAH",
+	4: "HADI SUWARNO, S.E., M.M.",
+	5: "SYAIFUL ANAM, S.E.",
+	6: "MUSRIFAH, S.Sos., S.H.",
+	7: "IWAN SETIONO, S.Sos.",
+	8: "UMAMIK PRIHATINI",
+	9: "AKIB MUHARAHMAN",
+	10: "HARUN SATRIA LASUG",
+};
+
+const GERINDRA = {
+	nomer: 2,
+	nama: "GERINDRA",
+	dapil: "DAPIL 5",
+	1: "ENDY SUHADI",
+	2: "YONA BAGUS WIDYATMOKO, S.H., S.M.",
+	3: "ROSMA YULIANI, S.T.",
+	4: "ROBI ABDUL AZIZ, S.H.",
+	5: "MOH. ARIFIN EFFENDI, S.H.",
+	6: "NINAYANTI, S.H., S.Sos.",
+	7: "H. SAMSIYONO",
+	8: "ANDI AFRIANTI, S.E.",
+	9: "SUWARI, S.H., M.Sos.",
+	10: "ALIF IMAN WALUYO, M.M.",
+};
+
+const PDIP = {
+	nomer: 3,
+	nama: "PDIP",
+	dapil: "DAPIL 5",
+	1: "H. SYAIFUDDIN ZUHRI, S.Sos.",
+	2: "SITI MARIYAM, S.H.",
+	3: "Dr. JOHN THAMRUN, S.H., M.H.",
+	4: "HADREAN RENANDA",
+	5: "HERI ACHMAD WIYONO",
+	6: "Ir. ERNA SUSILOWATI, M.M.A.",
+	7: "WIMBO ERNANTO, S.E.",
+	8: "SARONI, S.H.",
+	9: "WIHARTUTI DWI RAHAYU, S.H.",
+	10: "EDDY TARMIDI WIDJAJA",
+};
+
+const GOLKAR = {
+	nomer: 4,
+	nama: "GOLKAR",
+	dapil: "DAPIL 5",
+	1: "dr. AKMARAWITA KADIR",
+	2: "FERLIX PRASETYA",
+	3: "LENI SUSANAH",
+	4: "AGUS SANTOSO, S.T.",
+	5: "SUWANTO",
+	6: "SRI YULIANI",
+	7: "MUKHDLOR IQBAL BAIHAQI",
+	8: "SANJAYA DAFFA RAMADHAN PUTRA, S.H.",
+	9: "INGGIT DHAMAYANTI",
+	10: "FEBBY RAHMATULLAH MASRUCHIN, S.T., M.T.",
+};
+
+const NASDEM = {
+	nomer: 5,
+	nama: "NasDem",
+	dapil: "DAPIL 5",
+	1: "HARI SANTOSA",
+	2: "NANIEK ZULFIANI, S.E., M.M",
+	3: "TONI TAMATOMPOL, S.H.",
+	4: "YURIKE ARIYANTI, S.E.",
+	5: "RAHADIAN BINO WARDANU, S.H.",
+	6: "CATUR PRASETYA, S.S.",
+	7: "ISWANTO",
+	8: "NORA PRICILLA PANGGABEAN",
+	9: "ARIES BRATA YUDHA SIHOMBING",
+	10: "ANWAR KOHAR",
+};
+
+const PARTAI_BURUH = {
+	nomer: 6,
+	nama: "Partai Buruh",
+	dapil: "DAPIL 5",
+	1: "MOCHAMAD YASIN",
+	2: "HERU SETIYAWAN",
+	3: "SRI ASTUTIK, S.E.",
+	4: "RIZKI MAHENDRA DEBY KURNIAWAN",
+	5: "SIGIT HANDOKO",
+	6: "YUSNIARTIK, A.M.K.",
+	7: "ANANTYO PRIO JATMIKANING PUTRO",
+	8: "CATUR WAHYU DWI MULYONO",
+	9: "SUCI LESTARI, S.E.",
+	10: "DJULIP",
+};
+
+const GELORA = {
+	nomer: 7,
+	nama: "Partai Gelombang Rakyat Indonesia (Gelora)",
+	dapil: "DAPIL 5",
+	1: "ROBI FAJARILLAH RANGKUTI, S.T., M.M.",
+	2: "BUDI SANTOSO, S.H.",
+	3: "LAILATUL QOMARIYAH",
+	4: "MUDAFFAR",
+	5: "RAHYOGA MUDILUHUR, A.Md.",
+	6: "ULYA RETNO CAHYANI, S.T.",
+	7: "DADANG SETIAWAN, S.Sos.",
+	8: "HENIATI",
+	9: "SUGENG HIDAYAT",
+	10: "ANGGA TRI HADIYANTO",
+};
+
+const PKS = {
+	nomer: 8,
+	nama: "Partai Keadilan Sejahtera (PKS)",
+	dapil: "DAPIL 5",
+	1: "JOHARI MUSTAWAN, S.T.P., M.A.R.S.",
+	2: "Hj. RAHMAWATI, S.Sos.",
+	3: "H. ABDUL SOMAD, S.S., M.Ak.",
+	4: "BAMBANG SETIAWAN",
+	5: "AMIR SAKIB, S.Pd., M.Pd.I",
+	6: "IMELDA APRILIANITA, S.T.",
+	7: "IMAM HANAFI, S.Pd.I.",
+	8: "H. DENNY ARDIANSYAH, S.E.",
+	9: "YULI ARYANI",
+	10: "MOH. HARUN MURSYID ALAMIN, S.E.",
+};
+
+const PKN = {
+	nomer: 9,
+	nama: "Partai Kebangkitan Nusantara (PKN)",
+	dapil: "DAPIL 5",
+	1: "TITALEY, ANNA MARIA JOSEPHINE",
+	2: "ZANUAR LINGGA PRATAMA",
+};
+
+const HANURA = {
+	nomer: 10,
+	nama: "Partai Hati Nurani Rakyat (Hanura)",
+	dapil: "DAPIL 5",
+	1: "MUSA SANJAYA",
+	2: "RUDY MARUDUT PANGIHUTAN",
+	3: "OKTAVIANI KRISNAWATI",
+	4: "ARGONO WIDYATMOKO, S.E.",
+	5: "ARIF KUSNADI",
+	6: "YENNY SATYA RINA",
+	7: "RACHMAD CIPTADI",
+	8: "SUPRIONO",
+	9: "RETNO WULAN WIDOWATI",
+	10: "ASFARI ERLANGGA",
+};
+
+const PARTAI_GARUDA = {
+	nomer: 11,
+	nama: "PARTAI GARUDA",
+	dapil: "DAPIL 5",
+	1: "AGUSTINUS SOARES, S.I.P.",
+	2: "WIDIA ARI SUSANTI, S.H.I., M.H.I.",
+	3: "SIE ANRY ALEXANDER, A.Md.",
+	4: "IMELDA SUCIPTO, S.E.",
+	5: "RIKI WIRAWAN, A.Md.Kep., S.H.",
+};
+
+const PAN = {
+	nomer: 12,
+	nama: "PAN",
+	dapil: "DAPIL 5",
+	1: "H. SURAT, S.Pd.",
+	2: "R. CHANDRA HASAN PERDANA KUSUMA",
+	3: "Dra. Hj. NUR KHOLILAH",
+	4: "MOCH JAHJA SHOLAHUDIN, S.Pd.",
+	5: "ALAM ADHI KUSUMA",
+	6: "Dra. SRI KUSWATI",
+	7: "ANDHIKA ARDI SETYO WIBOWO",
+	8: "RINJANI DWI AFITA, S.H.",
+	9: "JULIADI CHEN, S.Si.",
+	10: "RIANDOKO, S.H.",
+};
+
+const PBB = {
+	nomer: 13,
+	nama: "PBB",
+	dapil: "DAPIL 5",
+	1: "SAMSURIN",
+	2: "ANIK INDARTI, S.E.",
+	3: "MOHAMAD ALI",
+	4: "MOCHAMAD SENO AJI PANGESTU, S.I.P.",
+	5: "VIVIEN NOVARINA OKTAVIANI",
+	6: "MICHAEL RYAN KAPARANG",
+	7: "RIDWAN",
+	8: "TOMMIE TANDJOJO",
+	9: "FARIDAH HANUM, S.Pd.",
+	10: "RACHMATULLAH",
+};
+
+const DEMOKRAT = {
+	nomer: 14,
+	nama: "DEMOKRAT",
+	dapil: "DAPIL 5",
+	1: "MOCHAMAD MACHMUD, S.Sos., M.Si.",
+	2: "INDRA WAHYUDI",
+	3: "NAFI OKTAVIA FARIKHA, S.H., M.Kn.",
+	4: "YAYUK SRI RAHAYU",
+	5: "ARNINA RISNIDAR",
+	6: "MUSTAGHFIRI ASROR, S.T.",
+	7: "CHINTYA JUNDA ANGGRAINI",
+	8: "DJANI EKO SETYO MARDYANINGSIH, S.H.",
+	9: "INOVETER",
+	10: "H. YUNUS, S.Pd.",
+};
+
+const PSI = {
+	nomer: 15,
+	nama: "PSI",
+	dapil: "DAPIL 5",
+	1: "JOSIAH MICHAEL",
+	2: "ALI MAHFUD",
+	3: "ENDY RIZKY PUTRI SUPRIYONO, S.S.",
+	4: "JOHNNY HEINTJE RUNTURAMBI",
+	5: "DAVID RUSLI",
+	6: "EVI YUNIARISDA HUTAGALUNG",
+	7: "CHOPIN PRANOTO",
+	8: "FRITZ BOZAR",
+	9: "SARAH DEWI ONGGOWINARSO",
+	10: "OKTAVIANUS JIMMY LOKMAN",
+};
+
+const PERINDO = {
+	nomer: 16,
+	nama: "PERINDO",
+	dapil: "DAPIL 5",
+	1: "SAMUEL TEGUH SANTOSO, S.H., M.H., M.Psi., M.M.",
+	2: "YUDI RUSMANTO, S.T.",
+	3: "DENIS YUSUF MERCURY, S.H.",
+	4: "LYDIA ANGGAR WATI, S.S.",
+	5: "ANDRE SETIAWAN, S.M.",
+	6: "BENI RATNO SUBANDI",
+	7: "EVI DAHLIA",
+	8: "RUDY RAHADIYANTO, S.H.",
+	9: "DJOKO SAPTO WIDODO",
+	10: "RUDY SUTANTO, S.E.",
+};
+
+const PPP = {
+	nomer: 17,
+	nama: "PPP",
+	dapil: "DAPIL 5",
+	1: "AGUS MASHURI",
+	2: "RONY HIMAWAN SYAFRADJISE, M.E.I.",
+	3: "Hj. NUR SYAMSIAH",
+	4: "H. SUMALI",
+	5: "MOH. AMIR",
+	6: "WAHYU LAILY",
+	7: "MUHAMMAD SAIKHU ANAM",
+	8: "PUJIASTUTI PURWANINGDYAH",
+	9: "WIRANTI, S.Psi.",
+	10: "MOCH. FAISAL DWI ALFIAN",
+};
+
+const PARTAI_UMMAT = {
+	nomer: 24,
+	nama: "PARTAI UMMAT",
+	dapil: "DAPIL 5",
+	1: "YUSUF, S.Sos., M.Pd.I",
+	2: "SYAMSUL ARIF, S.Pd.",
+	3: "SHAFIRA SHAFTA AULIA",
+	4: "ABDUL GHIFLY LUBIS",
+	5: "MOCH. RANGGA ARDIYANTO, S.H.",
+	6: "CINTA AURELLIA AZZAHRA DAHRULLAH",
+};
+
+export { PKB };

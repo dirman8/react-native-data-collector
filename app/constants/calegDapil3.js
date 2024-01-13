@@ -1,0 +1,268 @@
+// DATA CALON KOTA DAPIL 3
+const PKB = {
+	nomer: 1,
+	nama: "PKB",
+	dapil: "DAPIL 3",
+	1: "Hj. LAILA MUFIDAH, S.Ag.",
+	2: "NASFA UUTH AKHMADIE",
+	3: "TITIK INDRAWATI, S.H.",
+	4: "NINDI RAGIL KUSUMANINGRUM",
+	5: "MUHAMMAD CHUSAINI ASHARI",
+	6: "H. M. MAHFUDZ",
+	7: "SYUEB, S.E.",
+	8: "ANAFIA RAHMAWATI",
+	9: "M. MAS`UD, S.Hum.",
+	10: "DEDI TRIANTO",
+};
+
+const GERINDRA = {
+	nomer: 2,
+	nama: "GERINDRA",
+	dapil: "DAPIL 3",
+	1: "Drs. A. HERMAS THONY, M.Si",
+	2: "AHMAD MAUDUDI, S.H.I., M.H.",
+	3: "Rr. JOVITA BUDYANTI MESTIKA S, S.H., M.H.",
+	4: "EDY SUCIPTO, S.H.",
+	5: "SUDARMADJI, S.Pd., S.H.",
+	6: "ARDHIA PRAMESWARI REGITA CAHYANI, S.Ak., M.M.",
+	7: "ANDRY KURNIAWAN, S.T.",
+	8: "DWI ASTUTIK",
+	9: "ARINI HAQ",
+	10: "BAGAS IMAN WALUYO",
+};
+
+const PDIP = {
+	nomer: 3,
+	nama: "PDIP",
+	dapil: "DAPIL 3",
+	1: "ADI SUTARWIJONO",
+	2: "REKSANINGSIH",
+	3: "ANAS KARNO",
+	4: "ABDUL GHONI MUKHLAS NI`AM, S.Pd.I.",
+	5: "M. ERI IRAWAN, S.E., M.Kp.",
+	6: "SITI INDARTI, S.H.",
+	7: "TATO SAPTO WINAHYU, S.E.",
+	8: "HARIYANTO",
+	9: "DEFI MUTIARA, S.E.",
+	10: "ARYO SENO BAGASKORO",
+};
+
+const GOLKAR = {
+	nomer: 4,
+	nama: "GOLKAR",
+	dapil: "DAPIL 3",
+	1: "ARIF FATHONI, S.H.",
+	2: "MUHAMMAD KHUSEN, S.Sos.",
+	3: "DIAN JENNIE TJAHJAWATI, S.Sos.",
+	4: "H. ADITYA, S.Kom., M.M.T.",
+	5: "IGUSTI MADE SARJANA, S.H.",
+	6: "WAHYU WULANDHARI, S.E.",
+	7: "PHOA ANDITYA, S.E.",
+	8: "FARIH AMRULLAH DAEQ ASZAR",
+	9: "QUINCY MAYFERTA PRADANI PUTRI ARIANTO",
+	10: "EDO RAHARDIAN, S.H.",
+};
+
+const NASDEM = {
+	nomer: 5,
+	nama: "NasDem",
+	dapil: "DAPIL 3",
+	1: "DEDY SETIO, S.H., M.H.",
+	2: "LEA JULIANA, S.H., M.H.",
+	3: "CESSNA CHRISTINA DWIERIENDYA.N",
+	4: "ENY KUSNIANINGSIH, S.E.",
+	5: "H. MUHAMMAD SYAIFI",
+	6: "MOCHAMAD JOENOES",
+	7: "SILFANA HIDAYATI, S.Sos.",
+	8: "MUNAWAR",
+	9: "SODIKIN",
+	10: "OKKY FIRMANSYAH SURYATAMA, S.H.",
+};
+
+const PARTAI_BURUH = {
+	nomer: 6,
+	nama: "Partai Buruh",
+	dapil: "DAPIL 3",
+	1: "MAYNANG SUHARTANTO",
+	2: "HERI PRAMONO",
+	3: "MAISAROH",
+	4: "APRI HARDIYANTO",
+	5: "BRAM ARYA NAGARA, S.H.",
+	6: "GRACE CORESY MARSHA SULISTIO, S.H., M.Kn.",
+	7: "HOLIKURRAHMAN MAWARDI",
+	8: "TAUFAN PRASETYO",
+	9: "PUJI ASTUTIK",
+	10: "BENNY DWI SUGIANTORO",
+};
+
+const GELORA = {
+	nomer: 7,
+	nama: "Partai Gelombang Rakyat Indonesia (Gelora)",
+	dapil: "DAPIL 3",
+	1: "PRITA EKSIMANINGRUM, S.Psi.",
+	2: "MUCHAMAD AFIF",
+	3: "ZAINAL ARIFIN",
+	4: "RADEN ABIYOSO, S.Sos.",
+	5: "ENDANG ISMAYA",
+	6: "MUHAEMIN",
+	7: "BARDIO NOVIANTO",
+	8: "ANNISA NABILA",
+	9: "FAWWAZ SYAILENDRA",
+	10: "DEDDY ARDIANSYAH SUIS, S.E., M.Ak.",
+};
+
+const PKS = {
+	nomer: 8,
+	nama: "Partai Keadilan Sejahtera (PKS)",
+	dapil: "DAPIL 3",
+	1: "ANING RAHMAWATI, S.T.",
+	2: "Hj. drg. ENNY YEKTI KOENHARDINI",
+	3: "ZAINAL ABIDIN",
+	4: "RIZKI WANDA BUDIMAN, S.T.",
+	5: "Dr. Ir. DIYAN LESMANA, M.M.",
+	6: "dr. LINA AZIZAH",
+	7: "BUDI CAHYO WIDODO, S.H.",
+	8: "MOCH. SUSANTO",
+	9: "SUTIMI, S.T.",
+	10: "PINUJI",
+};
+
+const PKN = {
+	nomer: 9,
+	nama: "Partai Kebangkitan Nusantara (PKN)",
+	dapil: "DAPIL 3",
+	1: "SUHANTARI",
+	2: "DZURROTUL MAGHFIROH",
+	3: "IQBAL MUHAMMAD",
+	4: "HILNISA AGUSTINA",
+	5: "MUCHAMMAD AGITA ALFIANSYAH",
+};
+
+const HANURA = {
+	nomer: 10,
+	nama: "Partai Hati Nurani Rakyat (Hanura)",
+	dapil: "DAPIL 3",
+	1: "BUDI SANTOSO, S.E.",
+	2: "YOHANNES LODEWYK PELLETIMU",
+	3: "NURUL SUHESTI, S.Pd.",
+	4: "H. MUHAJIR WAHYU RAMADHAN",
+	5: "ANANG TRIHARSONO",
+	6: "RIRIN HIDAYATI",
+	7: "SEPTARYENA KUSUMANING SANTOSO",
+	8: "SUDJARWATI",
+};
+
+const PARTAI_GARUDA = {
+	nomer: 11,
+	nama: "PARTAI GARUDA",
+	dapil: "DAPIL 3",
+	1: "PUTRA LINGGA TAN, S.H.",
+	2: "FONNY",
+	3: "AGUNG SANTOSO, S.H.",
+};
+
+const PAN = {
+	nomer: 12,
+	nama: "PAN",
+	dapil: "DAPIL 3",
+	1: "H. M. ARSYAD, S.E, M.Si.",
+	2: "Ir. A. FAUZI",
+	3: "POE DEWI PANDALAGI, S.T.P.",
+	4: "ABDIM FAIZAL ZAKARIA",
+	5: "H. RACHMAN WINDHIARTO, S.H.",
+	6: "ALIYAH RAHMA PUTRI",
+	7: "Drs. MAHFUD",
+	8: "PONDRA IRAWAN PRADITA",
+	9: "ILANI PUJIARSITA",
+	10: "ABDULLAH AS SYI'ABUL HUDA",
+};
+
+const PBB = {
+	nomer: 13,
+	nama: "PBB",
+	dapil: "DAPIL 3",
+	1: "IVY JUANA",
+	2: "R. SYAIFUD DEDY IRAWAN",
+	3: "SAMPAN",
+	4: "NENENG ZULFIYAH",
+	5: "ROY SISWANTO",
+	6: "SRININGSIH HANDAYANI, S.Pd.",
+	7: "NABILA RAHMATIKA",
+	8: "BRIK ALATAS BOBBY",
+	9: "BAYU SETIADHARMA, S.H.",
+	10: "YUSNAH DM SIREGAR, S.E.",
+};
+
+const DEMOKRAT = {
+	nomer: 14,
+	nama: "DEMOKRAT",
+	dapil: "DAPIL 3",
+	1: "HERLINA HARSONO NJOTO, S.Psi., M.Psi., Psikolog",
+	2: "BAMBANG SUPRIADI, S.E., M.M.",
+	3: "FRANSISCA ADIANA, S.Psi., M.M.",
+	4: "NINA YULIANTI",
+	5: "DEWI MAYA SETIAWATI",
+	6: "LIEBERTO GUSTIE",
+	7: "ADITYA, AKP.",
+	8: "Dra. Ec. NANA PERMANAWATI",
+	9: "MOHAMMAD IKHSAN",
+	10: "MUKTI PRIJONO, S.H.",
+};
+
+const PSI = {
+	nomer: 15,
+	nama: "PSI",
+	dapil: "DAPIL 3",
+	1: "WILLIAM WIRAKUSUMA",
+	2: "ERWIN TJAHJUADI (JUDIT)",
+	3: "VIVI YULIAWATI",
+	4: "YUSAK LUDONG",
+	5: "RIO CANDRA ANGGRAHA",
+	6: "LILIANY WIJAYA",
+	7: "SURYANTO TANZIL",
+	8: "VALENCIA MELINDA ROTIKAN",
+	9: "ENRICO DANIEL",
+	10: "HARIONO",
+};
+
+const PERINDO = {
+	nomer: 16,
+	nama: "PERINDO",
+	dapil: "DAPIL 3",
+	1: "MOH. BADARUDDIN, S.E., M.M.",
+	2: "MUJIREJO",
+	3: "STELLA FRANCISS MULIANTO",
+	4: "MARINA ELISA LIPESIK",
+	5: "Dra. CONNY LIMANHADI",
+	6: "BUDDY TJATUR WIBOWO, S.T.",
+	7: "DESY SUKARIYANTI, S.H.",
+	8: "SYAMSUL ISLAM",
+	9: "SASA HUTAPEA, S.H.",
+	10: "ADI CAESARIO ASRIYANTO, S.Psi.",
+};
+
+const PPP = {
+	nomer: 17,
+	nama: "PPP",
+	dapil: "DAPIL 3",
+	1: "MUHAIMIN, S.H. M.M.",
+	2: "MUHAMMAD ISKHAQ, S.Ag.",
+	3: "Dra. UMINADIROH",
+	4: "ROKHADI EFFENDI, S.T.",
+	5: "MOHAMMAD NAWAWI",
+	6: "NURUL WIJAYANTI",
+	7: "MOCH SOELEHAN",
+	8: "AFRIDIANTA",
+	9: "LILIK TASBIKHANA, S.Sos.I",
+	10: "AINUL HIDAYAT, S.T.",
+};
+
+const PARTAI_UMMAT = {
+	nomer: 24,
+	nama: "PARTAI UMMAT",
+	dapil: "DAPIL 3",
+	1: "INDAH MAFRUCHA",
+	2: "GUGUS LEGOWO, S.Pd., M.M.",
+};
+
+export { PKB };

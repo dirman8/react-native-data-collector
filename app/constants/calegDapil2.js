@@ -1,0 +1,280 @@
+// DATA CALON KOTA DAPIL 2
+const PKB = {
+	nomer: 1,
+	nama: "PKB",
+	dapil: "DAPIL 2",
+	1: "H. MOHAMMAD FARIDZ AFIF, S.I.P., M.A.P.",
+	2: "DADANG HARYONO, S.E.",
+	3: "RISMA KUSUMA DEWI",
+	4: "Drs. SOLIHAN",
+	5: "MOH. SYAHCHROINI, S.H.",
+	6: "FITRI SULISTYOWATI",
+	7: "WAHJU TRISUSILAWATI",
+	8: "MOCH. MUCHYI",
+	9: "YULIANA",
+	10: "H. FATCHUL MUID, S.E.",
+	11: "RENDY PUTRA PRATAMA",
+};
+
+const GERINDRA = {
+	nomer: 2,
+	nama: "GERINDRA",
+	dapil: "DAPIL 2",
+	1: "Hj. LUTHFIYAH",
+	2: "dr. H. DWI WIJAYANTO, M.M.",
+	3: "ZAINAL ALIM, M.Pd.I.",
+	4: "Dr. ANNITA KASTUR, M.Pd.",
+	5: "MOH KAMIL, S.Ag.",
+	6: "MULYO WIDODO",
+	7: "INDAWATI, S.H., M.H.",
+	8: "SUDJARWO",
+	9: "DIANA ROSIANA SAMAR",
+	10: "YOSUA KRISTIAN KIROSA, S.Kom.",
+	11: "MOCH. ZAINAL ARIFIN",
+};
+
+const PDIP = {
+	nomer: 3,
+	nama: "PDIP",
+	dapil: "DAPIL 2",
+	1: "BAKTIONO, B.A., S.S.",
+	2: "WIYONO",
+	3: "Hj. KHUSNUL KHOTIMAH, S.Pd.I., M.Pd.I.",
+	4: "ZAINAL ARIFIN",
+	5: "TEGUH RACHMANTO, S.T.",
+	6: "ASRHI YUANITA HAQIE, S.E., S.H.",
+	7: "LAURENTIUS BUDIHARTA, S.Pi.",
+	8: "ABDUL MALIK",
+	9: "PRISTIWI MARHAENIKA",
+	10: "TARMUJI, S.Pd.",
+	11: "ARIEF WIRAWAN",
+};
+
+const GOLKAR = {
+	nomer: 4,
+	nama: "GOLKAR",
+	dapil: "DAPIL 2",
+	1: "ACHMAD NURDJAYANTO",
+	2: "MUHAMMAD ALYAS, S.H., M.H.",
+	3: "LEMBAH SETYOWATI BAKHTIAR",
+	4: "Hj. MIA EFIYANTI, S.E.",
+	5: "DEWI WATI AGUSTINI, S.P., M.Agr.",
+	6: "HASAN ARIFIN, S.Ag.",
+	7: "MATZALI",
+	8: "DEVI NOVIANTI",
+	9: "KARTUJI",
+	10: "FARHINA MAHDA ROSA, S.K.M.",
+	11: "OKTAVIANUS SABON TAKA, S.H.",
+};
+
+const NASDEM = {
+	nomer: 5,
+	nama: "NasDem",
+	dapil: "DAPIL 2",
+	1: "H. SAIFUL BAHRI, S.Ag.",
+	2: "SUPENO, S.T.",
+	3: "ATIKA SUHARYADI",
+	4: "MIFTAKHUL ULUM",
+	5: "EMIL ZULKARNAIN, S.H., M.Kn.",
+	6: "AZZA IBRAHIM, S.H., M.Kn.",
+	7: "SIGIT DWI SANTOSO, S.H., M.Kn.",
+	8: "AMIRAH DZAKY ILMA SYAHRI",
+	9: "HENNYDAR KUSUMANINGTYAS, S.E.",
+	10: "MOCH. ATHA'ILIAH IBNU SALIM, S.Pd.",
+	11: "HIDAYAT, S.Pd.",
+};
+
+const PARTAI_BURUH = {
+	nomer: 6,
+	nama: "Partai Buruh",
+	dapil: "DAPIL 2",
+	1: "MOCH. MOENIR",
+	2: "KETUT IRAWAN SUSANTO",
+	3: "MARLINA, S.Pd.",
+	4: "ABDUL AZIS RAHMADDANI PATTY, S.Psi.",
+	5: "AGUS MUDJIONO",
+	6: "WULANDARI",
+	7: "PRAHASTA RESI RIO ANGGERTA",
+	8: "ALFAN JUNAEDI",
+	9: "KUSMAWATI, A.Md.Kep.",
+	10: "SELVI INDAH SETYAWATI",
+	11: "ROBI SUHARSONO",
+};
+
+const GELORA = {
+	nomer: 7,
+	nama: "Partai Gelombang Rakyat Indonesia (Gelora)",
+	dapil: "DAPIL 2",
+	1: "ASYARI",
+	2: "SITI NAILATUN NADZIFAH",
+	3: "THORIQ SUBIYAKTO, S.I.P.",
+	4: "VIVI YULIANA",
+	5: "AGUS BUDI HARDJONO",
+	6: "DYAH PEWESTRI SURYANDARI",
+	7: "ADI ARIYONO",
+	8: "ESTI WIDAYANTI",
+	9: "TIRTA BAHTERA",
+	10: "MOCH EKO FACHRUDIN",
+	11: "FANI ANISTYA FIRMANSYAH PUTRI",
+};
+
+const PKS = {
+	nomer: 8,
+	nama: "Partai Keadilan Sejahtera (PKS)",
+	dapil: "DAPIL 2",
+	1: "ARIF FAHRUDDIN, S.T.",
+	2: "NAJI ABDURAHMAN BAWAZIER",
+	3: "HAWATIH",
+	4: "MOCH. RIDUWAN",
+	5: "Hj. SULUHWATI, S.T.",
+	6: "H. EKA SUREZTA",
+	7: "DINDA NURMALASARI FAHRIDA, S.Hum.",
+	8: "CHIFRUL SYAICHUDIN, S.T.",
+	9: "FARIS ABIDIN, S.Pi",
+	10: "FARHANNAH",
+	11: "ABDAN FIKRI, S.T., M.T.",
+};
+
+const PKN = {
+	nomer: 9,
+	nama: "Partai Kebangkitan Nusantara (PKN)",
+	dapil: "DAPIL 2",
+	1: "SYILVIA ERINA MAHARANI, S.Farm.",
+	2: "SOEDARNO",
+	3: "MUSYAROFAH",
+	4: "WAHYU NUR SAFITRI",
+};
+
+const HANURA = {
+	nomer: 10,
+	nama: "Partai Hati Nurani Rakyat (Hanura)",
+	dapil: "DAPIL 2",
+	1: "ABDUL CHAKIM, S.H.",
+	2: "ROBERT BIMA HENDRA GUNAWAN",
+	3: "TANDUR MULYATI",
+	4: "R. HARDJONO, S.T.",
+	5: "BEYNIMAS NOVINDRA EVI, S.H.",
+	6: "DHARMAWAN SETYO NOEGROHO, S.H., M.H., M.M.",
+	7: "MONA TOGI GABERIA HUTAPEA",
+};
+
+const PARTAI_GARUDA = {
+	nomer: 11,
+	nama: "PARTAI GARUDA",
+	dapil: "DAPIL 2",
+	1: "ROMLAH, S.Kep.",
+	2: "LUKIHERMANTO",
+	3: "MISTIATI",
+};
+
+const PAN = {
+	nomer: 12,
+	nama: "PAN",
+	dapil: "DAPIL 2",
+	1: "JULIANA EVA WATI, S.H, M.Kn.",
+	2: "ZAINUL ARIFIN",
+	3: "H. AGUNG SUDIYONO",
+	4: "AFIFAH, S.H, M.H.",
+	5: "MUHAMMAD NUR SUGIANTO, S.Kep.",
+	6: "dr. POEDJIANTO LEONARDI",
+	7: "DEWI ASTUTIK",
+	8: "MUHAMMAD ADENIN",
+	9: "ULAIKAH AGUSTINAH, S.T.",
+	10: "SENDY MIZAN SUHERLAN",
+	11: "ACHMAD RIFKY",
+};
+
+const PBB = {
+	nomer: 13,
+	nama: "PBB",
+	dapil: "DAPIL 2",
+	1: "PUJI KURNIAWATI ANDANSARI, S.Pd.",
+	2: "OLIVIA KURNIAWATI, S.Psi.",
+	3: "AUNUL FITRI, S.Fil.I., M.Pd.I.",
+	4: "WAFA HASNI, S.Pd.",
+	5: "TUNGGAL TEJA ASMARA",
+	6: "ABD. ROHMAN, S.Psi.",
+	7: "HARIADI HERISANTOSO",
+	8: "P. DEVI IRWANTY",
+	9: "BINDI SWASANA NUGROHO AJI, S.T.",
+	10: "DWI PRIATMAWATI",
+	11: "YULI NUR BANDIYANTI",
+};
+
+const DEMOKRAT = {
+	nomer: 14,
+	nama: "DEMOKRAT",
+	dapil: "DAPIL 2",
+	1: "MUHAMMAD SAIFUDDIN, S.Sos.",
+	2: "I. DEWA PUTU TIRTA YASA, S.H., M.H.",
+	3: "ELOK CAHYANI",
+	4: "JULI POERNOMO, S.T.",
+	5: "BALGIS ALMASKATI, S.H.",
+	6: "ADI MULYONO, S.E., M.M.",
+	7: "SAIFUL BACHRI GANI, S.Pd.",
+	8: "VRENTIANA SUPANGATIN",
+	9: "MOCH DAMANHURI, S.Psi.",
+	10: "YUYUD INDRAYANI, A.Md.",
+};
+
+const PSI = {
+	nomer: 15,
+	nama: "PSI",
+	dapil: "DAPIL 2",
+	1: "YUGA PRATISABDA WIDYAWASTA",
+	2: "ARIFIN HAMID",
+	3: "UMMU FARIDA",
+	4: "BUDI HARTO",
+	5: "FATHUR ROHMAN GHOZALI",
+	6: "FENNY ANGGRAINI EFFENDY",
+	7: "SAHALA TUA PARULIAN HUTAGALUNG",
+	8: "HARRY RACHMANTO",
+	9: "SHIRLEY NJOO",
+	10: "DESY CHRISTIANI OSMAN",
+};
+
+const PERINDO = {
+	nomer: 16,
+	nama: "PERINDO",
+	dapil: "DAPIL 2",
+	1: "DENNY MAHENDRA",
+	2: "RUSTAMAJI",
+	3: "MELDA SUMARLIE",
+	4: "ANIEK RIFTIANAH",
+	5: "KUMPUL SUHADA",
+	6: "RAMBLY EDAH",
+	7: "ARDINA SEPTIAN PRASTIWI",
+	8: "HASAN N RAHMAD",
+	9: "SOFA SAFRIDA",
+	10: "SETIOAJI SUGIARTO, S.H., M.Kn.",
+	11: "Drs. Ec. SOEGIYANTO, B.Sc., M.M.",
+};
+
+const PPP = {
+	nomer: 17,
+	nama: "PPP",
+	dapil: "DAPIL 2",
+	1: "Drs. H. BUCHORI IMRON",
+	2: "NDARU NURNANINGSIH",
+	3: "SAIFI ABDI",
+	4: "PAINO, S.H.",
+	5: "NOVIA SHOFIATIN NASIHA, S.Pd.",
+	6: "HARIYADI",
+	7: "ARYA DHARMA SAPUTRA",
+	8: "RIKA LIFTIANA, S.E.",
+	9: "HARIJONO ISKANDAR, S.H.",
+	10: "CHAMDANI",
+	11: "EKO JUNIARSO, S.H., M.H.",
+};
+
+const PARTAI_UMMAT = {
+	nomer: 24,
+	nama: "PARTAI UMMAT",
+	dapil: "DAPIL 2",
+	1: "NOFIE DWI MASTUTI, S.Sos.",
+	2: "AHMAD FATHULLAH, M.Pd.",
+	3: "IMAM NURMANSYAH",
+	4: "ANISAH ALI BACHSIN, S.Pd.",
+};
+
+export { PKB };

@@ -1,6 +1,6 @@
 import { SafeAreaView, ScrollView, View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Stack, useRouter } from "expo-router";
-import { COLORS } from "../../../constants/theme";
+import { COLORS } from "../../constants/theme";
 
 const Home = () => {
 	// const getData = async () => {
@@ -27,11 +27,17 @@ const Home = () => {
 	}
 
 	const router = useRouter();
-	const handleManualPress = () => {
-		router.push("/manualcount");
+	const handlePilpres = () => {
+		router.push("/pilpres");
 	};
-	const handleRealPress = () => {
-		router.push("/realcount");
+	const handlePusat = () => {
+		router.push("/pusat");
+	};
+	const handleProvinsi = () => {
+		router.push("/provinsi");
+	};
+	const handleKota = () => {
+		router.push("/kota");
 	};
 
 	return (
@@ -42,37 +48,38 @@ const Home = () => {
 					headerStyle: {
 						backgroundColor: "#f4511e",
 					},
-					headerTintColor: "#fff",
-					headerTitleStyle: {
-						fontWeight: "bold",
-					},
 				}}
 			/>
 
-			<ScrollView>
-				<View style={styles.container}>
-					<TouchableOpacity
-						style={styles.button}
-						onPress={handleManualPress}
-					>
-						<Text style={styles.text}>Manual Count</Text>
-					</TouchableOpacity>
+			<View style={styles.container}>
+				<TouchableOpacity
+					style={{ ...styles.button, backgroundColor: COLORS.grayPilpres }}
+					onPress={handlePilpres}
+				>
+					<Text style={styles.text}>A. Input Pilpres</Text>
+				</TouchableOpacity>
 
-					<TouchableOpacity
-						style={[styles.button, styles.secondaryColor]}
-						onPress={handleRealPress}
-					>
-						<Text style={styles.text}>Real Count</Text>
-					</TouchableOpacity>
+				<TouchableOpacity
+					style={{ ...styles.button, backgroundColor: COLORS.yellowPusat }}
+					onPress={handlePusat}
+				>
+					<Text style={styles.text}>B. Input DPR-RI Pusat</Text>
+				</TouchableOpacity>
 
-					<TouchableOpacity
-						style={[styles.button, styles.secondaryColor]}
-						onPress={() => router.push("/manualcount/Page4")}
-					>
-						<Text style={styles.text}>Go to Page 4</Text>
-					</TouchableOpacity>
-				</View>
-			</ScrollView>
+				<TouchableOpacity
+					style={{ ...styles.button, backgroundColor: COLORS.blueProvinsi }}
+					onPress={handleProvinsi}
+				>
+					<Text style={styles.text}>C. Input DPRD Provinsi</Text>
+				</TouchableOpacity>
+
+				<TouchableOpacity
+					style={{ ...styles.button, backgroundColor: COLORS.greenKota }}
+					onPress={handleKota}
+				>
+					<Text style={styles.text}>D. Input DPRD Kota</Text>
+				</TouchableOpacity>
+			</View>
 		</SafeAreaView>
 	);
 };
@@ -82,6 +89,7 @@ export default Home;
 const styles = StyleSheet.create({
 	container: {
 		alignItems: "center",
+		marginTop: 100,
 	},
 	button: {
 		alignItems: "center",
