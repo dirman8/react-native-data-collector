@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, Button, SafeAreaView } from 'react-native';
 import { useForm, FormProvider } from 'react-hook-form';
-import { Stack, router } from "expo-router";
+import { router, Stack, Link } from "expo-router";
 import { Picker } from '@react-native-picker/picker';
 import { useStateMachine } from 'little-state-machine';
 import { TextInput } from '../../components/form/TextInput';
 import { kelurahan, kecamatan } from '../../constants/dataKelurahan';
+import { tps, tpscontoh } from '../../constants/tps';
 import updateForm from "../../components/form/updateForm";
+import { useNavigation } from '@react-navigation/native';
+import { StackActions } from "@react-navigation/native";
 
-export default function IdentitasTps({tingkat}) {
+
+export default function IdentitasTps({tingkat, bgcolor, title}) {
     const {actions, state} = useStateMachine({updateForm});
     const {...methods} = useForm({mode: 'onChange'});
     
@@ -16,6 +20,17 @@ export default function IdentitasTps({tingkat}) {
     const [formError, setError] = useState(false);
     const [kecamatanPilihan, setKecamatanPilihan] = useState("Asemrowo");
     const [kelurahanPilihan, setKelurahanPilihan] = useState("Asemrowo");
+    const [nomerTps, setNomerTps] = useState();
+    const [nomerTpsPilihan, setNomerTpsPilihan] = useState();
+
+    // Menggenerate nomer tps sebanyak jumlah tps dari masing-masing kelurahan yang dipilih
+    const getNomerTps = () => {
+        const jumlahTps = tps[kecamatanPilihan][0][kelurahanPilihan]
+        const numbers = Array.from({ length: jumlahTps }, (_, index) => index + 1);
+        const stringNumbers = numbers.map(number => number.toString());
+        return stringNumbers
+    }
+    console.log("getNomerTps : ", getNomerTps());
 
     // const postForm = async () => {
     //     try {
@@ -34,45 +49,60 @@ export default function IdentitasTps({tingkat}) {
 	// 		}
 	// 	};
         
-    const onSubmit = (data) => {
-        const identitastps = {
-            ...data,
+    const onSubmit = () => {
+        actions.updateForm({
             kecamatan: kecamatanPilihan,
-            kelurahan: kelurahanPilihan
-        }
-        actions.updateForm(identitastps);
-        console.log("identitas tps from index :", identitastps)
+            kelurahan: kelurahanPilihan,
+            nomortps: nomerTpsPilihan
+        });
         setFormUpdated(true);
         // postForm();
-        router.replace(`/${tingkat}/Page1`);
+        router.push(`/${tingkat}/Page1`);
     }
 
     const onError = (errors) => {
         console.log('errors',errors);
     }
 
-        useEffect(() => {
-     if (formUpdated) {
-            console.log("prepare to postForm : ", state);
-            // postForm(); 
-            setFormUpdated(false);
-        }
-    }, [formUpdated, state]);
+    const navigation = useNavigation();
+
+    //     useEffect(() => {
+    //  if (formUpdated) {
+    //         console.log("prepare to postForm : ", state);
+    //         // postForm(); 
+    //         setFormUpdated(false);
+    //     }
+    // }, [formUpdated, state]);
+
+    useEffect(() => {
+        setNomerTps(getNomerTps());
+    }, [])
+    
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
-        <Stack.Screen
-				options={{
-					headerTitle: "Rekap Suara Provinsi",
-				}}
-			/>
+        <Stack.Screen 
+        options={{ 
+            title:title,
+            headerStyle: {
+						backgroundColor: bgcolor,
+					},
+            // headerLeft: () => {
+			// 			return (
+			// 				<Button
+			// 					title="Back"
+			// 					onPress={navigation.dispatch(StackActions.popToTop())}
+			// 				/>
+			// 			);
+            // },
+        }}  />
         <View style={styles.container}>
             { formError ? <View><Text style={{color: 'red'}}>There was a problem with loading the form. Please try again later.</Text></View> : 
             <>
                 <Text style={styles.title}>Identitas TPS</Text>
 
                 {/* Input Kecamatan dan Kelurahan dengan react-native-picker-select */}
-                <View style={styles.pickerContainer}>
+                <View style={{...styles.pickerContainer, backgroundColor: bgcolor}}>
                      <Text style={styles.pickerText}>Kecamatan</Text>
                      <Picker
                         style={styles.pickerStyles}
@@ -88,7 +118,7 @@ export default function IdentitasTps({tingkat}) {
                     </Picker>
                 </View>
 
-                <View style={styles.pickerContainer}>
+                <View style={{...styles.pickerContainer, backgroundColor: bgcolor}}>
                      <Text style={styles.pickerText}>Kelurahan</Text>
                      <Picker
                         style={styles.pickerStyles}
@@ -100,29 +130,19 @@ export default function IdentitasTps({tingkat}) {
                     </Picker>
                 </View>
 
-                {/* Input Nomor TPS dengan react-hook-form */}
-                <FormProvider {...methods} >
-                    <View style={styles.pickerContainer}>
-                        <TextInput
-                            name="nomortps"
-                            label="Nomor TPS"
-                            placeholder="nomor"
-                            keyboardType="numeric"
-                            rules={{
-                                required: 'Masukkan Nomor TPS!',
-                                validate: {
-                                    isNumber: (value) => !isNaN(value) && Number(value) <= 999,
-                                },
-                            }}
-                            setFormError={setError}
-                        />
-                        {/* Tampilkan error jika input bukan angka atau nilainya lebih dari 999*/}
-                        {methods.formState.errors.nomortps?.type === "isNumber" &&  
-                        <Text style={styles.errorInput}>
-                            Input must be a number
-                        </Text>}
-                    </View>
-                </FormProvider>
+                <View style={{...styles.pickerContainer, backgroundColor: bgcolor}}>
+                     <Text style={styles.pickerText}>Nomer TPS</Text>
+                     <Picker
+                        style={styles.pickerStyles}
+                        selectedValue={nomerTpsPilihan}
+                        multiple={false}
+                        onValueChange={(value) => setNomerTpsPilihan(value)}>
+                            {
+                                nomerTps?.map(nomer => <Picker.Item key={nomer} label={nomer} value={nomer}/>)
+                            }
+                    </Picker>
+                </View>
+
             </>
             }
             <View style={styles.button}>
@@ -138,13 +158,6 @@ export default function IdentitasTps({tingkat}) {
 }
 
 const styles = StyleSheet.create({
-    button: {
-        marginTop: 40,
-        color: 'white',
-        height: 40,
-        backgroundColor: '#4F200D',
-        borderRadius: 4,
-  },
     container: {
         flex: 1,
         padding: 8,
@@ -152,6 +165,13 @@ const styles = StyleSheet.create({
         borderColor: 'white',
         borderWidth: 1,
     },
+    button: {
+        marginTop: 40,
+        color: 'white',
+        height: 40,
+        backgroundColor: '#4F200D',
+        borderRadius: 4,
+  },
     title: {
         color: '#4F200D',
         textAlign: 'center',
@@ -162,7 +182,7 @@ const styles = StyleSheet.create({
         color: 'red'
     },
     pickerContainer:{
-        backgroundColor:'#FFD93D',
+        // backgroundColor:'#FFD93D',
         padding: 8,
         paddingBottom: 20,
         borderColor: 'white',

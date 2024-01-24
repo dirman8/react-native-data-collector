@@ -1,9 +1,8 @@
-import { View, Text } from "react-native";
+import IdentitasTps from "../../components/manualcount/identitasTps";
+import {COLORS} from "../../constants/theme";
 
-export default function RealCount() {
+export default function IdentitasTpsPusat() {
     return (
-        <View>
-            <Text>Real Count</Text>
-        </View>
+        <IdentitasTps tingkat="pusat" bgcolor={COLORS.yellowPusat} title="Input DPRD RI"/>
     );
 }

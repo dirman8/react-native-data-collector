@@ -4,8 +4,8 @@ const DP = {
 	dp: "A. DATA PEMILIH",
 	dpt: "1. Jumlah pemilih dalam DPT (Model A.3-KPU)",
 	dptb: "2. Jumlah pemilih dalam DPTb (Model A.4-KPU)",
-	dptk: "3. Jumlah pemilih dalam DPK (Model A.DPK-KPU)",
-	totaldp: "4. Jumlah pemilih (A.1 + A.2 + A.3)",
+	dpk: "3. Jumlah pemilih dalam DPK (Model A.DPK-KPU)",
+	totaldp1: "4. Jumlah pemilih (A.1 + A.2 + A.3)",
 };
 //[ dpp, dp, dpt, dptb, dptk, totaldp ]
 
@@ -15,7 +15,7 @@ const PHP = {
 	phpdpt: "1. Jumlah pengguna hak pilih dalam DPT (Model C7.DPT-KPU)",
 	phpdptb: "2. Jumlah pengguna hak pilih dalam DPTb (Model A.4-KPU)",
 	phpdpk: "3. Jumlah pengguna hak pilih dalam DPK (Model A.DPK-KPU)",
-	totalphp: "4. Jumlah pengguna hak pilih (B.1 + B.2 + B.3)",
+	totalphp1: "4. Jumlah pengguna hak pilih (B.1 + B.2 + B.3)",
 };
 // [ php, phpdpt, phpdptb, phpdpk, totalphp ]
 

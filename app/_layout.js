@@ -1,10 +1,9 @@
-import { Stack } from "expo-router/stack";
+import { Stack } from "expo-router";
 import { StateMachineProvider, createStore } from "little-state-machine";
-import HomeScreen from "./HomeScreen";
 
 createStore({});
 
-const Layout = () => {
+const AppLayout = () => {
 	return (
 		<StateMachineProvider>
 			<Stack
@@ -24,4 +23,4 @@ const Layout = () => {
 	);
 };
 
-export default Layout;
+export default AppLayout;

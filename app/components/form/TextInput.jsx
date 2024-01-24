@@ -1,7 +1,7 @@
 import { View, TextInput as RNTextInput, StyleSheet, Text } from 'react-native';
 import { useController, useFormContext } from 'react-hook-form';
 
-const ControllerInput = (props) => {
+const ControllerInput = (props) => {  
   const formContext = useFormContext();
   const { formState} = formContext;
   
@@ -11,6 +11,8 @@ const ControllerInput = (props) => {
       rules,
       defaultValue,
       updateInput,
+      color,
+      height,
       ...inputProps
   }= props;
 
@@ -19,10 +21,10 @@ const ControllerInput = (props) => {
   const hasError = Boolean(formState.errors[name])
 
   return (
-      <View style={styles.container}>
-        <View style={styles.rowContainer}>
+      <View style={{...styles.container, backgroundColor: color}}>
+        <View style={{...styles.rowContainer, backgroundColor: color, height: height}}>
           {label && (<Text style={styles.label}>{label}</Text>)}
-          <View style={styles.inputContainer}>
+          <View style={{...styles.inputContainer}}>
               <RNTextInput
                   autoCapitalize="none"
                   textAlign="left"
@@ -56,6 +58,8 @@ export const TextInput = (props) => {
       rules,
       defaultValue,
       setFormError,
+      color,
+      height,
       ...inputProps
   }= props;
 
@@ -72,14 +76,13 @@ export const TextInput = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 45,
     justifyContent: 'center',
     padding: 8,
-    backgroundColor: '#FFD93D',
     borderColor: 'white',
     borderWidth: 1,
   },
   rowContainer: {
+    // height: 25, //height for Page 3 = 25
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -94,11 +97,11 @@ const styles = StyleSheet.create({
     height: 35,
     padding: 10,
     borderRadius: 4,
-    marginTop: 20
   },
   inputContainer: {
-    marginBottom: 20,
+    height: 40,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   error: {
     color: 'white',

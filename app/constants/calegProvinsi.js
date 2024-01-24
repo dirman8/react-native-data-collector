@@ -1,0 +1,220 @@
+// DATA CALON PROVINSI
+const PKB = {
+	nomer: 1,
+	nama: "PKB",
+	1: "Drs. M. MUSYAFAK",
+	2: "CAMELIA HABIBA",
+	3: "H. SAMSUL ARIFIN, S.Ag., M.Si.",
+	4: "MAHFUDZ",
+	5: "SITI NAFSIYAH, S.I.P.",
+	6: "AGUSTINA AYU TRISWARDANI, S.H., M.Kn.",
+	7: "AMIN MARINDO SOEKASA",
+	8: "MOCHAMMAD IMRON DAHLAN",
+};
+
+const GERINDRA = {
+	nomer: 2,
+	nama: "GERINDRA",
+	1: "CAHYO HARJO PRAKOSO, S.H., M.H.",
+	2: "HADI DEDIYANSAH, S.Pd., M.Hum.",
+	3: "KIKA MARYANTIKA, S.H., M.Kn.",
+	4: "RAKHMAD DIAN BAGUS PRAMONO",
+	5: "SUTJIPTO JOE ANGGA, M.B.A.",
+	6: "RENY WIDYA LESTARI",
+	7: "IRMAWATI, S.Psi.",
+	8: "ROFIQI, S.Fil.l., M.I.P.",
+};
+
+const PDIP = {
+	nomer: 3,
+	nama: "PDIP",
+	1: "YORDAN M. BATARA-GOA,S.T., M.Si.",
+	2: "AURA DEWANGGA BUANA PUTRA",
+	3: "AGATHA RETNOSARI, S.T.",
+	4: "H. FUAD BENARDI, S.Kom., M.MT.",
+	5: "AGUSTIN POLIANA,S.H., M.Si.",
+	6: "MULYONO, S.H., M.H.",
+	7: "NONIATI",
+	8: "FRANGKY CHANDRA, S.E.",
+};
+
+const GOLKAR = {
+	nomer: 4,
+	nama: "GOLKAR",
+	1: "BLEGUR PRIJANGGONO, S.H.",
+	2: "NORA HANYONOWATI, S.H.",
+	3: "TJANDRA DWIANI SULISTYOWATI",
+	4: "TRI WIDODO",
+	5: "SYAFIRA DEVANI PUTRI",
+	6: "MUHAMMAD ARIF ARIFIN",
+	7: "CICIK WIDIYAWATI, S.H., M.Kn.",
+	8: "DEVI IKA WAHYUNINGTYAS, S.M.",
+};
+
+const NASDEM = {
+	nomer: 5,
+	nama: "NASDEM",
+	1: "WARSITO, S.E.",
+	2: "LATIF, S.Pd., M.A.P.",
+	3: "OENTARI KARTIKAHIDAJATI S., M.Pd.",
+	4: "GATOT SUTANTRA WISNUMURTI, S.H.",
+	5: "Dr. H. YOYOK SUBAGIONO, S.I.K., S.H., M.Si.",
+	6: "TSUMMA KUNTUM HASANAH, S.T.",
+	7: "IWAN SUMARTONO, S.E.",
+	8: "Drs. H. SUKOTO, M.M., M.Pd.",
+};
+
+const PARTAI_BURUH = {
+	nomer: 6,
+	nama: "PARTAI_BURUH",
+	1: "NURUDDIN HIDAYAT, S.T.",
+	2: "MURSID",
+	3: "ANINDYA SHABRINA PRASETIYO",
+	4: "VINSENSIUS ANJAR LESMANA",
+	5: "FIRDAUSI AKBAR",
+	6: "RAKHMAWATI",
+	7: "LUSIANTI HANAVIANTI, S.E.",
+	8: "MOH. ISMAIL",
+};
+
+const GELORA = {
+	nomer: 7,
+	nama: "GELORA",
+	1: "AMIR ARIF",
+	2: "MOCH. ERWIN ELYAS",
+	3: "FUADUZ ZAKIYAH",
+	4: "ANANG SUIWAN",
+	5: "HIKMATUL ULYA NS",
+	6: "TALITHA NABILLA APSARI, S.Sos.",
+	7: "TRI ICHWAN SANTOSO",
+	8: "ARMADAN MATYADI",
+};
+
+const PKS = {
+	nomer: 8,
+	nama: "PKS",
+	1: "Hj. LILIK HENDARWATI",
+	2: "AHMAD JABIR, S.T., M.T.",
+	3: "FATKUR ROHMAN, S.T., M.T.",
+	4: "FARIED, S.H.",
+	5: "NASTITI WAHYU PRISTIANTI, S.M., M.M.",
+	6: "SULTHONY HARIS MIFTAH, S.H.",
+	7: "ATIEK SUHARYATI, S.Farm.",
+	8: "HAMMAD AKRAM",
+};
+const PKN = {
+	nomer: 9,
+	nama: "PKN",
+	1: "A HAFIZ AZHARI",
+	2: "H. SOEPARMO",
+	3: "DEWI IGA MARTHAPURI, S.H.",
+};
+
+const HANURA = {
+	nomer: 10,
+	nama: "HANURA",
+	1: "AHMADI, S.E.",
+	2: "SUDARSONO",
+	3: "SRI WAHYUNINGSIH, S.E.",
+	4: "SOEMARNO, S.H., M.Hum.",
+	5: "DARU HAMISENO, S.H.",
+	6: "RR. ERRIANI DEWI, S.E.",
+};
+
+const PARTAI_GARUDA = {
+	nomer: 11,
+	nama: "PARTAI_GARUDA",
+	1: "RAMOT H. BATUBARA, S.H.",
+	2: "SUKARTININGSIH, S.Ag.",
+	3: "dr. BERLIAN ANIEK HERLINA",
+	4: "ASRIE DWI JAYANTIE",
+	5: "R. YOEDO KARTOMO",
+	6: "HOMSATUN MAULIDA NUR AISI FILLAH",
+};
+
+const PAN = {
+	nomer: 12,
+	nama: "PAN",
+	1: "MAHSUN DJAYADI",
+	2: "FENNY LUFITASARI, S.E.",
+	3: "EDWARD DEWARUCI",
+	4: "ERLIEN ROSELIEN",
+	5: "MOH. FAUZAN",
+	6: "CHENTIA AISYA OKTARINA, S.I.Kom.",
+	7: "MERIANA CANDRA KURNIASARI, S.Pd., M.Pd.",
+	8: "EMIL SALIM",
+};
+
+const PBB = {
+	nomer: 13,
+	nama: "PBB",
+	1: "HARI ASTUTI",
+	2: "FERY IRAWAN, S.Pd.",
+	3: "TJIPTA GUNAWAN, S.T.",
+	4: "HERLAMBANG PONCO PRASETYO, S.H.",
+	5: "ENNY SOELISTYOWATI",
+	6: "LIA AFNANI HAPSARI",
+	7: "REZA FIRMANSYAH",
+};
+
+const DEMOKRAT = {
+	nomer: 14,
+	nama: "DEMOKRAT",
+	1: "Dr. H. RASIYO, M.Si.",
+	2: "HARTOYO, S.H., M.H.",
+	3: "ERNAWATI, S.Sos.",
+	4: "MOCHAMAD RIZAL",
+	5: "RAMNA",
+	6: "DIDIK IRIJANTO",
+	7: "AFIFIN MAHDAYANTO, S.T., M.M.",
+	8: "SUMARDI",
+};
+
+const PSI = {
+	nomer: 15,
+	nama: "PSI",
+	1: "ERICK KOMALA, S.H., M.H.",
+	2: "SATRIA BUANA SEMBIRING, M.T.",
+	3: "JIK MAMLU'AH RAHMAWATI, S.Pd.",
+	4: "SERFI CHERRY, M.M.",
+	5: "YOHANES PRAWIRAYASA",
+	6: "SIFERA PUANUGRANINGTYAS HARIKUSUMAWARDHANI",
+	7: "ABDUL HOLIL",
+};
+
+const PERINDO = {
+	nomer: 16,
+	nama: "PERINDO",
+	1: "Pdt. GUNAWAN, S.Th.",
+	2: "NURIATI, S.Sos., M.M.",
+	3: "IRWAN PONTOH, S.E., M.Psi.",
+	4: "HAMSAH, S.E.",
+	5: "JULI PRIJAWATI, S.Pd., M.M.",
+	6: "Drs. MUSTAKIM HAMZAH, M.M.",
+	7: "RAHAYU WURYANI, S.Sos.",
+};
+
+const PPP = {
+	nomer: 17,
+	nama: "PPP",
+	1: "Drs. K.H. ABDUL MUTHOLIB AM, M.M.",
+	2: "SANTI FAUZIAH",
+	3: "NURHOLIS",
+	4: "H. MOH. SYAFIK MAHFUDL",
+	5: "JUNAEDI, S.Sos., M.I.Kom.",
+	6: "SUPRIHATIN, S.E.",
+	7: "SITI ROMLAH, S.Pd.",
+	8: "DEA WINNIE PERTIWI",
+};
+
+const PARTAI_UMMAT = {
+	nomer: 24,
+	nama: "PARTAI_UMMAT",
+	1: "ALI MURTADHO M.S, S.I.P., M.Si.",
+	2: "NIDA URROHMAH IPMAWATI",
+	3: "M. RIDWAN ELY",
+	4: "MOCHAMMAD FACHMI ROH SARIFUDIN, S.T.",
+	5: "MIFTAHUL HIDAYAH, S.T.",
+};
+
+export { PKB, GERINDRA, PDIP, GOLKAR, NASDEM, PARTAI_BURUH, GELORA, PKS, PKN, HANURA, PARTAI_GARUDA, PAN, PBB, DEMOKRAT, PSI, PERINDO, PPP, PARTAI_UMMAT };

@@ -21,7 +21,7 @@ export const kelurahan = {
 	Sawahan: ["Banyu Urip", "Kupang Krajan", "Pakis", "Patemon", "Putat Jaya", "Sawahan"],
 	Semampir: ["Ampel", "Pegirian", "Sidotopo", "Ujung", "Wonokusumo"],
 	Simokerto: ["Kapasan", "Sidodadi", "Simokerto", "Simolawang", "Tambakrejo"],
-	Sukolilo: ["Gebang Putih", "Keputih", "Klampisngasem", "Medokan Semampir", "Menur Pumpungan", "Nginden", "Jangkungan", "Semolowaru"],
+	Sukolilo: ["Gebang Putih", "Keputih", "Klampisngasem", "Medokan Semampir", "Menur Pumpungan", "Nginden Jangkungan", "Semolowaru"],
 	Sukomanunggal: ["Putatgede", "Simomulyo", "Simomulyo Baru", "Sonokwijenan", "Sukomanunggal", "Tanjungsari"],
 	Tambaksari: ["Dukuh Setro", "Gading", "Kapas Madya", "Pacar Kembang", "Pacar Keling", "Ploso", "Rangkah", "Tambaksari"],
 	Tandes: ["Balongsari", "Banjar Sugihan", "Karang Poh", "Manukan Kulon", "Manukan Wetan", "Tandes"],

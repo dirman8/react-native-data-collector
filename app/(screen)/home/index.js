@@ -1,8 +1,16 @@
-import { SafeAreaView, ScrollView, View, TouchableOpacity, Text, StyleSheet } from "react-native";
-import { Stack, useRouter } from "expo-router";
+import { SafeAreaView, Image, View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { router, Stack } from "expo-router";
 import { COLORS } from "../../constants/theme";
+import { statusStorage } from "../../utils/storage";
 
 const Home = () => {
+	//Get Status Pengiriman tiap Tingkat
+	statusStorage.set("init", true);
+	const statusKota = statusStorage.getBoolean("statuskota");
+	const statusProvinsi = statusStorage.getBoolean("statusprovinsi");
+	const statusPusat = statusStorage.getBoolean("statuspusat");
+	const statusPilpres = statusStorage.getBoolean("statuspilpres");
+
 	// const getData = async () => {
 	// 	try {
 	// 		const response = await fetch("https://react-native-data-collector-server-7r4d546wu-dirman8.vercel.app/api/getAll");
@@ -22,11 +30,7 @@ const Home = () => {
 	// useEffect(() => {
 	// 	getData();
 	// }, []);
-	function onChange() {
-		return (val) => setSelectedTeam(val);
-	}
 
-	const router = useRouter();
 	const handlePilpres = () => {
 		router.push("/pilpres");
 	};
@@ -39,46 +43,73 @@ const Home = () => {
 	const handleKota = () => {
 		router.push("/kota");
 	};
+	const gotoExcel = () => {
+		router.push("/excel");
+	};
+	const hapusStorage = () => {
+		statusStorage.clearAll();
+	};
 
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
-			<Stack.Screen
-				options={{
-					headerTitle: "Aplikasi Rekap Suara Pemilu 2024",
-					headerStyle: {
-						backgroundColor: "#f4511e",
-					},
-				}}
-			/>
-
+			<Stack.Screen options={{ title: "Aplikasi Manual Count - PKS Surabaya" }} />
 			<View style={styles.container}>
-				<TouchableOpacity
-					style={{ ...styles.button, backgroundColor: COLORS.grayPilpres }}
-					onPress={handlePilpres}
-				>
-					<Text style={styles.text}>A. Input Pilpres</Text>
-				</TouchableOpacity>
+				<View style={styles.rowContainer}>
+					<TouchableOpacity
+						style={{ ...styles.button, backgroundColor: "#464646" }}
+						onPress={handlePilpres}
+					>
+						<Text style={styles.text}>A. Input Pilpres</Text>
+					</TouchableOpacity>
+					{statusPilpres ? <Image source={require("../../assets/delivered.png")} /> : null}
+				</View>
 
-				<TouchableOpacity
-					style={{ ...styles.button, backgroundColor: COLORS.yellowPusat }}
-					onPress={handlePusat}
-				>
-					<Text style={styles.text}>B. Input DPR-RI Pusat</Text>
-				</TouchableOpacity>
+				<View style={styles.rowContainer}>
+					<TouchableOpacity
+						style={{ ...styles.button, backgroundColor: "#FFD500" }}
+						onPress={handlePusat}
+					>
+						<Text style={styles.text}>B. Input DPR-RI Pusat</Text>
+					</TouchableOpacity>
+					{statusPusat ? <Image source={require("../../assets/delivered.png")} /> : null}
+				</View>
 
-				<TouchableOpacity
-					style={{ ...styles.button, backgroundColor: COLORS.blueProvinsi }}
-					onPress={handleProvinsi}
-				>
-					<Text style={styles.text}>C. Input DPRD Provinsi</Text>
-				</TouchableOpacity>
+				<View style={styles.rowContainer}>
+					<TouchableOpacity
+						style={{ ...styles.button, backgroundColor: "#0175C0" }}
+						onPress={handleProvinsi}
+					>
+						<Text style={styles.text}>C. Input DPRD Provinsi</Text>
+					</TouchableOpacity>
+					{statusProvinsi ? <Image source={require("../../assets/delivered.png")} /> : null}
+				</View>
 
-				<TouchableOpacity
-					style={{ ...styles.button, backgroundColor: COLORS.greenKota }}
-					onPress={handleKota}
-				>
-					<Text style={styles.text}>D. Input DPRD Kota</Text>
-				</TouchableOpacity>
+				<View style={styles.rowContainer}>
+					<TouchableOpacity
+						style={{ ...styles.button, backgroundColor: "#01A836" }}
+						onPress={handleKota}
+					>
+						<Text style={styles.text}>D. Input DPRD Kota</Text>
+					</TouchableOpacity>
+					{statusKota ? <Image source={require("../../assets/delivered.png")} /> : null}
+				</View>
+
+				<View style={{ marginTop: 40 }}>
+					<TouchableOpacity
+						style={{ ...styles.button, backgroundColor: "#1d6c41" }}
+						onPress={gotoExcel}
+					>
+						<Text style={styles.text}>Kirim File Excel</Text>
+					</TouchableOpacity>
+				</View>
+				<View style={{ marginTop: 40 }}>
+					<TouchableOpacity
+						style={{ ...styles.button, backgroundColor: "#1d6c41" }}
+						onPress={hapusStorage}
+					>
+						<Text style={styles.text}>Hapus Storage</Text>
+					</TouchableOpacity>
+				</View>
 			</View>
 		</SafeAreaView>
 	);
@@ -90,6 +121,13 @@ const styles = StyleSheet.create({
 	container: {
 		alignItems: "center",
 		marginTop: 100,
+	},
+	rowContainer: {
+		padding: 8,
+		height: 55, //height for Page 3 = 25
+		flexDirection: "row",
+		alignItems: "center",
+		justifyContent: "space-between",
 	},
 	button: {
 		alignItems: "center",

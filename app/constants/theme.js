@@ -3,10 +3,14 @@ const COLORS = {
 	secondary: "#444262",
 	tertiary: "#FF7754",
 
-	greenKota: "#01A836",
-	blueProvinsi: "#0175C0",
-	yellowPusat: "#FDEE01",
-	grayPilpres: "#515151",
+	greenKota: "#7CCD7C",
+	blueProvinsi: "#6FA2C1",
+	yellowPusat: "#FDD835",
+	grayPilpres: "#BDBDBD",
+	// greenKota: "#01A836",
+	// blueProvinsi: "#0175C0",
+	// yellowPusat: "#FFD500",
+	// grayPilpres: "#BDBDBD",
 
 	gray: "#83829A",
 	gray2: "#C1C0C8",
