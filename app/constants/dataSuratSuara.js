@@ -37,4 +37,12 @@ const DPSS = {
 };
 // [ dpss, dpss1, dpss2, dpss3, dpss4 ]
 
-export { DP, PHP, DPD, DPSS };
+// DATA SUARA SAH DAN TIDAK SAH
+const DSS = {
+	dss: "V. DATA SUARA SAH DAN TIDAK SAH",
+	dss1: "A. JUMLAH SELURUH SUARA SAH",
+	dss2: "B. JUMLAH SUARA TIDAK SAH",
+	dss3: "C. JUMLAH SELURUH SUARA SAH DAN TIDAK SAH",
+};
+
+export { DP, PHP, DPD, DPSS, DSS };

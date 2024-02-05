@@ -1,9 +1,12 @@
-import { SafeAreaView, Image, View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { useState, useEffect } from "react";
+import { SafeAreaView, Image, View, TouchableOpacity, Text, StyleSheet, Alert } from "react-native";
 import { router, Stack } from "expo-router";
 import { COLORS } from "../../constants/theme";
-import { statusStorage } from "../../utils/storage";
+import { kotaStorage, provinsiStorage, pusatStorage, pilpresStorage, tpsStorage, statusStorage, dapilStorage } from '../../utils/storage';
 
-const Home = () => {
+
+export default function PilihTingkat() {
+	const [isDisabled, setIsDisabled] = useState(true);
 	//Get Status Pengiriman tiap Tingkat
 	statusStorage.set("init", true);
 	const statusKota = statusStorage.getBoolean("statuskota");
@@ -32,23 +35,48 @@ const Home = () => {
 	// }, []);
 
 	const handlePilpres = () => {
-		router.push("/pilpres");
+		router.push("/pilpres/Page1");
 	};
 	const handlePusat = () => {
-		router.push("/pusat");
+		router.push("/pusat/Page1");
 	};
 	const handleProvinsi = () => {
-		router.push("/provinsi");
+		router.push("/provinsi/Page1");
 	};
 	const handleKota = () => {
-		router.push("/kota");
+		router.push("/kota/Page1");
 	};
 	const gotoExcel = () => {
 		router.push("/excel");
 	};
-	const hapusStorage = () => {
-		statusStorage.clearAll();
-	};
+
+	const logOut = () => {
+		kotaStorage.clearAll(); 
+        provinsiStorage.clearAll(); 
+        pusatStorage.clearAll(); 
+        pilpresStorage.clearAll(); 
+        tpsStorage.clearAll(); 
+        statusStorage.clearAll(); 
+        dapilStorage.clearAll(); 
+        router.replace("/home/login")
+	}
+	// const hapusStorage = () => {
+	// 	Alert.alert( 
+	// 		'Konfirmasi', 'Apakah anda ingin menghapus data yang telah anda input ?', 
+	// 		[ {text: 'Yes', onPress: () => {statusStorage.clearAll(); router.replace("/home")}}, 
+	// 		  {text: 'No', onPress: () => console.log('No Pressed'), style: 'cancel'}, ],
+	// 		{ cancelable: false }
+	// 	);
+	// };
+
+	useEffect(() => {
+		// Check all the conditions and update isDisabled
+		if (statusKota && statusProvinsi && statusPusat && statusPilpres) {
+			setIsDisabled(false);
+		} else {
+			setIsDisabled(true);
+		}
+	}, [statusKota, statusProvinsi, statusPusat, statusPilpres]);
 
 	return (
 		<SafeAreaView style={{ flex: 1 }}>
@@ -97,25 +125,31 @@ const Home = () => {
 				<View style={{ marginTop: 40 }}>
 					<TouchableOpacity
 						style={{ ...styles.button, backgroundColor: "#1d6c41" }}
-						onPress={gotoExcel}
+						onPress={isDisabled ? null : gotoExcel}
 					>
 						<Text style={styles.text}>Kirim File Excel</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={{ marginTop: 40 }}>
 					<TouchableOpacity
-						style={{ ...styles.button, backgroundColor: "#1d6c41" }}
+						style={{ ...styles.button, backgroundColor: "#FFA500" }}
+						onPress={logOut}
+					>
+						<Text style={styles.text}>Log Out</Text>
+					</TouchableOpacity>
+				</View>
+				{/* <View style={{ marginTop: 40 }}>
+					<TouchableOpacity
+						style={{ ...styles.button, backgroundColor: "#FFA500" }}
 						onPress={hapusStorage}
 					>
 						<Text style={styles.text}>Hapus Storage</Text>
 					</TouchableOpacity>
-				</View>
+				</View> */}
 			</View>
 		</SafeAreaView>
 	);
 };
-
-export default Home;
 
 const styles = StyleSheet.create({
 	container: {
@@ -137,6 +171,7 @@ const styles = StyleSheet.create({
 		margin: 10,
 		borderRadius: 5,
 		width: 200,
+		height: 40,
 	},
 	text: {
 		fontSize: 16,

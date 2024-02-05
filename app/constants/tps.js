@@ -31,5 +31,3 @@ export const tps = {
 	Wonocolo: [{ "Bendul Merisi": 46 }, { "Jemur Wonosari": 57 }, { Margorejo: 30 }, { Sidosermo: 36 }, { "Siwalan Kerto": 47 }],
 	Wonokromo: [{ Darmo: 43 }, { Jagir: 59 }, { Ngagel: 34 }, { Ngagelrejo: 126 }, { Sawunggaling: 75 }, { Wonokromo: 109 }],
 };
-
-export const tpscontoh = { Asemrowo: [{ Darmo: 43 }, { Jagir: 59 }], Wonocolo: [{ "Bendul Merisi": 46 }, { "Jemur Wonosari": 57 }] };

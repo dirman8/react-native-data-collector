@@ -84,7 +84,6 @@ export default function ManualCount1({tingkat, bgcolor, title}) {
             totaldpperempuan: totalDpPerempuan,
             totaldp: totalDp
         })
-        console.log("State from Page1 :", state)
         router.push(`/${tingkat}/Page1B`)
     }
 
@@ -248,7 +247,7 @@ export default function ManualCount1({tingkat, bgcolor, title}) {
 
                 <View style={styles.button}>
                     <Button
-                        title="Kirim"
+                        title="Next"
                         color="#FF8400"
                         onPress={methods.handleSubmit(onSubmit, onError)}
                     />

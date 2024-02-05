@@ -3,13 +3,13 @@ import { router, Stack } from 'expo-router';
 import { View, Text, SafeAreaView, StyleSheet, Button,  Image} from 'react-native';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
-import { pilpresStorage, statusStorage } from '../../utils/storage';
 import updateForm from "../../components/form/updateForm"
 import { TextInput } from '../../components/form/TextInput';
 import { capres } from '../../constants/capres';
 import {COLORS} from "../../constants/theme";
 
 export default function ManualCountPilpres3() {
+    // const {actions, state} = useStateMachine({deleteForm});
     const {actions, state} = useStateMachine({updateForm});
     const {...methods} = useForm({mode: 'onChange'});
     const [totalSuaraCapres, setTotalSuaraCapres] = useState();
@@ -19,17 +19,15 @@ export default function ManualCountPilpres3() {
 		return keysArray.map((key) => ({ id: `capres${key}`, label: capres[key] }));
 	};
     const readyCapres = convertToObject();
+    console.log("readyCapres:", readyCapres)
  
     const onSubmit = (data) => {
-        pilpresStorage.set("hasilPilpres", JSON.stringify({...state,...data}));
-        statusStorage.set('statuspilpres', true);
-        console.log("data from Page 3: ", data)
         actions.updateForm({
             ...state,
-            ...data,
+            ...data, 
         });
-        console.log("State from Page 3: ", state);
-        router.replace('/pilpres/successpage');
+        // actions.deleteForm({ initial: 1 });
+        router.replace('/pilpres/Page4');
     }
 
     const onError = (errors) => {
@@ -76,7 +74,7 @@ export default function ManualCountPilpres3() {
 
             <View style={styles.container}>
                 <Button style={styles.button}
-                title="Kirim"
+                title="Next"
                 color="#FF8400"
                 onPress={methods.handleSubmit(onSubmit, onError)}
                 />

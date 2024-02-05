@@ -7,7 +7,7 @@
     "plugins": [
       "expo-router"
     ],
-    "name": "react-native-first-project",
+    "name": "Tabulasi PKS Surabaya",
     "slug": "react-native-first-project",
     "extra": {
       "router": {

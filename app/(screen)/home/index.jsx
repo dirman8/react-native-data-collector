@@ -10,7 +10,7 @@ import { tps } from '../../constants/tps';
 import updateForm from "../../components/form/updateForm";
 
 
-export default function IdentitasTps({tingkat, bgcolor, title}) {
+export default function Home() {
     const {actions, state} = useStateMachine({updateForm});
     const {...methods} = useForm({mode: 'onChange'});
     
@@ -18,24 +18,21 @@ export default function IdentitasTps({tingkat, bgcolor, title}) {
     const [formError, setError] = useState(false);
     const [kecamatanPilihan, setKecamatanPilihan] = useState("Asemrowo");
     const [kelurahanPilihan, setKelurahanPilihan] = useState("Asemrowo");
-    const [nomerTps, setNomerTps] = useState();
-    const [nomerTpsPilihan, setNomerTpsPilihan] = useState();
-
-    console.log ("kecamatanPilihan :", kecamatanPilihan)
-
+    const [nomerTpsPilihan, setNomerTpsPilihan] = useState(1);
+   
     // Menggenerate nomer tps sebanyak jumlah tps dari masing-masing kelurahan yang dipilih
-    const getNomerTps = () => {
-        const jumlahTps = tps[kecamatanPilihan][0][kelurahanPilihan]
-        const numbers = Array.from({ length: jumlahTps }, (_, index) => index + 1);
-        if ((kecamatanPilihan === "Wonocolo" && kelurahanPilihan === "Siwalan Kerto") || (kecamatanPilihan === "Sukolilo" && kelurahanPilihan === "Keputih")) {
-            completeNumbers = numbers.push(901, 902);
-        } else if ((kecamatanPilihan === "Jambangan" && kelurahanPilihan === "Jambangan") || (kecamatanPilihan === "Sambikerep" && kelurahanPilihan === "Sambikerep")) {
-            completeNumbers = numbers.push(901);
-        } else {
-            completeNumbers = numbers;
+    const findValueByKey = (arr, key) => {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].hasOwnProperty(key)) {
+        return arr[i][key];
         }
-        console.log("completeNumbers :", completeNumbers);
-        const stringNumbers = completeNumbers.map(number => number.toString());
+    }
+    return undefined; // Return undefined if the key is not found in any object
+    }
+    const getNomerTps = () => {
+        const jumlahTps = findValueByKey(tps[kecamatanPilihan], kelurahanPilihan)
+        const numbers = Array.from({ length: jumlahTps }, (_, index) => index + 1);
+        const stringNumbers = numbers.map(number => number.toString());
         return stringNumbers
     }
 
@@ -64,7 +61,7 @@ export default function IdentitasTps({tingkat, bgcolor, title}) {
         });
         setFormUpdated(true);
         // postForm();
-        router.push(`/${tingkat}/Page1`);
+        router.push(`/home/pilihTingkat`);
     }
 
     const onError = (errors) => {
@@ -81,18 +78,13 @@ export default function IdentitasTps({tingkat, bgcolor, title}) {
     //     }
     // }, [formUpdated, state]);
 
-    useEffect(() => {
-        setNomerTps(getNomerTps());
-    }, [kelurahanPilihan, kecamatanPilihan]);
-    
-
     return (
         <SafeAreaView style={{ flex: 1 }}>
         <Stack.Screen 
         options={{ 
-            title:title,
+            title:"Aplikasi Manual Count - PKS Surabaya",
             headerStyle: {
-						backgroundColor: bgcolor,
+						backgroundColor: "#f4511e",
 					},
             // headerLeft: () => {
 			// 			return (
@@ -109,7 +101,7 @@ export default function IdentitasTps({tingkat, bgcolor, title}) {
                 <Text style={styles.title}>Identitas TPS</Text>
 
                 {/* Input Kecamatan dan Kelurahan dengan react-native-picker-select */}
-                <View style={{...styles.pickerContainer, backgroundColor: bgcolor}}>
+                <View style={{...styles.pickerContainer, backgroundColor: "#ffa94d"}}>
                      <Text style={styles.pickerText}>Kecamatan</Text>
                      <Picker
                         style={styles.pickerStyles}
@@ -125,7 +117,7 @@ export default function IdentitasTps({tingkat, bgcolor, title}) {
                     </Picker>
                 </View>
 
-                <View style={{...styles.pickerContainer, backgroundColor: bgcolor}}>
+                <View style={{...styles.pickerContainer, backgroundColor: "#ffa94d"}}>
                      <Text style={styles.pickerText}>Kelurahan</Text>
                      <Picker
                         style={styles.pickerStyles}
@@ -137,15 +129,14 @@ export default function IdentitasTps({tingkat, bgcolor, title}) {
                     </Picker>
                 </View>
 
-                <View style={{...styles.pickerContainer, backgroundColor: bgcolor}}>
+                <View style={{...styles.pickerContainer, backgroundColor: "#ffa94d"}}>
                      <Text style={styles.pickerText}>Nomer TPS</Text>
                      <Picker
                         style={styles.pickerStyles}
                         selectedValue={nomerTpsPilihan}
-                        multiple={false}
                         onValueChange={(value) => setNomerTpsPilihan(value)}>
                             {
-                                nomerTps?.map(nomer => <Picker.Item key={nomer} label={nomer} value={nomer}/>)
+                                getNomerTps()?.map(nomer => <Picker.Item key={nomer} label={nomer} value={nomer}/>)
                             }
                     </Picker>
                 </View>

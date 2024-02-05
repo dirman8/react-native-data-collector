@@ -41,7 +41,6 @@ export default function ManualCount2({tingkat, bgcolor, title}) {
             totaldisterdaftar: totalDisTerdaftar,
             totaldispengguna: totalDisPengguna,
         });
-        console.log("State from Page 2: ", state);
         router.push(`/${tingkat}/Page2B`);
     }
 
@@ -168,7 +167,7 @@ export default function ManualCount2({tingkat, bgcolor, title}) {
 
             <View style={styles.button}>
                 <Button
-                    title="Kirim"
+                    title="Next"
                     color="#FF8400"
                     onPress={methods.handleSubmit(onSubmit, onError)}
                 />

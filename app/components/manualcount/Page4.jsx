@@ -1,39 +1,68 @@
-import { router, Stack} from 'expo-router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, Button, SafeAreaView, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { router, Stack} from 'expo-router';
 import { useForm, FormProvider } from 'react-hook-form';
 import { useStateMachine } from 'little-state-machine';
-import updateForm from "../../components/form/updateForm"
-import { TextInput } from '../../components/form/TextInput';
-import { useNavigation } from '@react-navigation/native';
+import { TextInput } from '../form/TextInput';
+import { pilpresStorage, pusatStorage, provinsiStorage, kotaStorage, statusStorage, tpsStorage } from '../../utils/storage';
+import deleteForm from "../../components/form/deleteForm";
+import StoreData2 from '../../utils/storeData2';
+import StoreData3 from '../../utils/storeData3';
+import SendToDb from '../../utils/sendToDb';
 
-export default function ManualCount2B({tingkat, bgcolor, title}) {
-    const {actions, state} = useStateMachine({updateForm});
+export default function ManualCount4({parties, tingkat, bgcolor, title}) {
+    const {actions, state} = useStateMachine({deleteForm});
     const {...methods} = useForm({mode: 'onChange'});
 
     const initSuratSuara = {
-    ssterima: 0,
-    sskembali: 0,
-    sstidakpakai: 0,
-    sspakai: 0,
+    sssah: 0,
+    sstidaksah: 0,
+    totalss: 0,
 }
 
     const [dataPemilih, setDataPemilih] = useState(initSuratSuara);
-    const [ssPakai, setSsPakai] = useState(0);
+    const [totalSs, setTotalSs] = useState(0);
+    const [identitasTpsForStorage, setIdentitasTpsForStorage] = useState({kecamatan: "", kelurahan: "", nomortps: ""})
     
-    const updateTotalTerdaftar = (text) => {
-        const ssterima = methods.getValues("ssterima");
-        const sskembali = methods.getValues("sskembali");
-        const sstidakpakai = methods.getValues("sstidakpakai");
-        const sspakai = ssterima - sskembali - sstidakpakai;
-        setSsPakai(ssterima - sskembali - sstidakpakai);
+    const updateTotalSs = (text) => {
+        const sssah = methods.getValues("sssah");
+        const sstidaksah = methods.getValues("sstidaksah");
+        const totalss = sssah + sstidaksah;
+        setTotalSs(totalss);
     }
+
+    const {kecamatan, kelurahan, nomortps} = state;
+    const identitasTps = {kecamatan:kecamatan, kelurahan:kelurahan, nomortps:nomortps}
+    
     const onSubmit = (data) => {
-        actions.updateForm({
-            ...data, 
-            sspakai: ssPakai,
-        });
-        router.push(`/${tingkat}/Page3`);
+        const fullState = {...state, ...data, totalss: totalSs};
+        console.log("fullState :", fullState);
+        console.log("identitasTps :", identitasTps);
+           tpsStorage.set("identitasTps", JSON.stringify(identitasTps));
+        if (tingkat === 'kota') {
+            // SendToDb(fullState);
+            const dataGabungan = StoreData2(fullState, parties)
+            kotaStorage.set("hasilKota", JSON.stringify(dataGabungan));
+            statusStorage.set('statuskota', true);
+            actions.deleteForm({ initial: 1 });
+        } else if (tingkat === 'provinsi') {
+            const dataGabungan = StoreData2(fullState, parties)
+            provinsiStorage.set("hasilProvinsi", JSON.stringify(dataGabungan));
+            statusStorage.set('statusprovinsi', true);
+            actions.deleteForm({ initial: 1 });
+        } else if (tingkat === 'pusat') {
+            const dataGabungan = StoreData2(fullState, parties)
+            pusatStorage.set("hasilPusat", JSON.stringify(dataGabungan));
+            statusStorage.set('statuspusat', true);
+            actions.deleteForm({ initial: 1 });
+        } else if (tingkat === 'pilpres') {
+            const dataGabungan = StoreData3(fullState, parties)
+            pilpresStorage.set("hasilPilpres", JSON.stringify(dataGabungan));
+            statusStorage.set('statuspilpres', true);
+            actions.deleteForm({ initial: 1 });
+        } 
+        router.push(`/${tingkat}/successpage`);
     }
 
     const onError = (errors) => {
@@ -41,6 +70,11 @@ export default function ManualCount2B({tingkat, bgcolor, title}) {
     }
 
     const navigation = useNavigation();
+
+    useEffect(() => {
+        setIdentitasTpsForStorage(identitasTps);
+    }, [])
+    
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -65,10 +99,10 @@ export default function ManualCount2B({tingkat, bgcolor, title}) {
             <View>
                 <FormProvider {...methods} >
                     <View>  
-                        <Text style={styles.title}>III. DATA PENGGUNAAN SURAT SUARA</Text>
+                        <Text style={styles.title}>V. DATA SUARA SAH DAN TIDAK SAH</Text>
                         <TextInput
-                            name="ssterima"
-                            label="1. Surat Suara Diterima"
+                            name="sssah"
+                            label="A. JUMLAH SELURUH SUARA SAH"
                             placeholder="000"
                             keyboardType="numeric"
                             color={bgcolor}
@@ -78,15 +112,15 @@ export default function ManualCount2B({tingkat, bgcolor, title}) {
                                     isNumber: (value) => !isNaN(value) && Number(value) <= 999,
                                 },
                             }}
-                            updateInput={updateTotalTerdaftar}
+                            updateInput={updateTotalSs}
                         />
                         {methods.formState.errors.dptlaki?.type === "isNumber" ?  
                         <Text style={styles.errorInput}>Input harus angka </Text> : null
                         }
                         
                         <TextInput
-                            name="sskembali"
-                            label="2. Surat Suara Dikembalikan"
+                            name="sstidaksah"
+                            label="B. JUMLAH SUARA TIDAK SAH"
                             placeholder="000"
                             keyboardType="numeric"
                             color={bgcolor}
@@ -96,22 +130,7 @@ export default function ManualCount2B({tingkat, bgcolor, title}) {
                                     isNumber: (value) => !isNaN(value) && Number(value) <= 999,
                                 },
                             }}
-                            updateInput={updateTotalTerdaftar}
-                        />
-
-                        <TextInput
-                            name="sstidakpakai"
-                            label="3. Surat Suara Tidak Terpakai"
-                            placeholder="000"
-                            keyboardType="numeric"
-                            color={bgcolor}
-                            rules={{
-                                required: 'Wajib diisi!',
-                                validate: {
-                                    isNumber: (value) => !isNaN(value) && Number(value) <= 999,
-                                },
-                            }}
-                            updateInput={updateTotalTerdaftar}
+                            updateInput={updateTotalSs}
                         />
                         {methods.formState.errors.terdaftarperempuan?.type === "isNumber" ?  
                         <Text style={styles.errorInput}>
@@ -119,8 +138,8 @@ export default function ManualCount2B({tingkat, bgcolor, title}) {
                         </Text>:null
                         } 
                         <View style={{...styles.totalContainer, backgroundColor: bgcolor}}>
-                            <Text style={{marginBottom: 10}}>4. Jumlah Surat Suara yang digunakan</Text>
-                            <Text style={styles.totalText}>{ssPakai}</Text>
+                            <Text style={{marginBottom: 10}}>C. JUMLAH SELURUH SUARA SAH DAN TIDAK SAH</Text>
+                            <Text style={styles.totalText}>{totalSs}</Text>
                         </View>
                     </View>
                 </FormProvider>

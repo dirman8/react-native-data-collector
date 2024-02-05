@@ -6,25 +6,10 @@ import deleteForm from "../form/deleteForm"
 export default function SuccessPage({storage, datakey}) {
     const {actions, state} = useStateMachine({deleteForm});
 
-     // Ekstak data pemilih dari state
-    const copiedData={...state}
-
-       //Menyimpan data ke MMKV Storage
-    storage.set(datakey, JSON.stringify(copiedData));
-
-
     const backToHome = () => {
-        router.replace('/home');
-    }
-    const gotoPage4 = () => {
-        router.replace('/kota/Page4');
+        router.replace('/home/pilihTingkat');
     }
 
-    const deleteState = () => {
-        actions.deleteForm({
-            initial: 1
-        });
-    }
     return (
         <SafeAreaView style={styles.safeArea}>
         <Stack.Screen 
@@ -41,16 +26,6 @@ export default function SuccessPage({storage, datakey}) {
                     title="Kembali ke Halaman Depan"
                     color="#FF8400"
                     onPress={backToHome}
-                />
-                <Button style={styles.button}
-                    title="Page 4"
-                    color="#FF8400"
-                    onPress={gotoPage4}
-                />
-                <Button style={styles.button}
-                    title="Delete State"
-                    color="#FF8400"
-                    onPress={deleteState}
                 />
             </View>
         </SafeAreaView>

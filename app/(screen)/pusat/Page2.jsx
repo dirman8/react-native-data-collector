@@ -3,6 +3,6 @@ import {COLORS} from "../../constants/theme";
 
 export default function ManualCountPusat2() {
     return (
-        <ManualCount2 tingkat="pusat" bgcolor={COLORS.yellowPusat}/>
+        <ManualCount2 tingkat="pusat" bgcolor={COLORS.yellowPusat} title="Input DPR RI"/>
     );
 }

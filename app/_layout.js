@@ -1,5 +1,7 @@
 import { Stack } from "expo-router";
 import { StateMachineProvider, createStore } from "little-state-machine";
+import { AuthProvider } from "./context/AuthContext";
+import { AxiosProvider } from "./context/AxiosContext";
 
 createStore({});
 
@@ -17,7 +19,7 @@ const AppLayout = () => {
 					},
 				}}
 			>
-				<Stack.Screen name="home" />
+				<Stack.Screen name="index" />
 			</Stack>
 		</StateMachineProvider>
 	);

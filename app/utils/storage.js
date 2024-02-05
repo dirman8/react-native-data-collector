@@ -20,3 +20,11 @@ export const statusStorage = new MMKV({
 	id: "status-storage",
 	// path: "../storage",
 });
+export const tpsStorage = new MMKV({
+	id: "tps-storage",
+	// path: "../storage",
+});
+export const dapilStorage = new MMKV({
+	id: "dapil-storage",
+	// path: "../storage",
+});
