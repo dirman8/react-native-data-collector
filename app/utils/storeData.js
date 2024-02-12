@@ -71,10 +71,8 @@ export default function StoreData(fullState, capres) {
 		const excelFormat = keysArray.map((key) => ({ A: key, B: capres[key], C: fullState[`capres${key}`] }));
 		return excelFormat;
 	};
-	console.log("readyNamadanHasilPilpres", readyNamaDanHasilPilpres);
 
 	const readyHasilGabungan = [...aoo, {}, ...readyNamaDanHasilPilpres];
-	console.log("readyHasilGabungan", readyHasilGabungan);
 
 	return null;
 }

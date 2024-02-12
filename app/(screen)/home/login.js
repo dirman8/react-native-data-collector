@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet, SafeAreaView, TextInput, Button, Alert } from "react-native";
+import { TouchableOpacity, View, Text, StyleSheet, SafeAreaView, TextInput, Button, Alert } from "react-native";
 import { useState } from "react";
-import { router } from "expo-router";
+import { router, Stack } from "expo-router";
 import updateForm from "../../components/form/updateForm";
 import { useStateMachine } from "little-state-machine";
-import { dapilStorage } from "../../utils/storage";
+import { dapilStorage, statusStorage } from "../../utils/storage";
+
 export default function Login() {
 	const { actions, state } = useStateMachine({ updateForm });
 	const [username, setUsername] = useState("");
@@ -22,10 +23,10 @@ export default function Login() {
 
 			// Update Dapil Storage
 			dapilStorage.set("dapil", JSON.stringify({ username: data.username, dapil: data.dapil }));
+			statusStorage.clearAll();
 
 			if (password === data.password) {
-				console.log("Successfull Login, dapil :", data.dapil);
-				router.push("/home");
+				router.replace("/home");
 			}
 		} catch (error) {
 			Alert.alert("Login Failed", error.response.data.message);
@@ -34,6 +35,12 @@ export default function Login() {
 
 	return (
 		<SafeAreaView style={styles.container}>
+			<Stack.Screen
+				options={{
+					title: "",
+					headerShown: false, // Hide the header for this screen
+				}}
+			/>
 			<Text style={styles.logo}>Log In</Text>
 			<View style={styles.form}>
 				<TextInput
@@ -54,11 +61,12 @@ export default function Login() {
 					value={password}
 				/>
 			</View>
-			<Button
-				title="Login"
-				style={styles.button}
-				onPress={() => onLogin()}
-			/>
+			<TouchableOpacity
+				style={[styles.button]}
+				onPress={onLogin}
+			>
+				<Text style={styles.buttonText}>Login</Text>
+			</TouchableOpacity>
 		</SafeAreaView>
 	);
 }
@@ -88,5 +96,18 @@ const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		marginVertical: 20,
 	},
-	button: {},
+	button: {
+		alignItems: "center",
+		backgroundColor: "#2196f3",
+		justifyContent: "center",
+		padding: 10,
+		margin: 10,
+		borderRadius: 5,
+		width: 200,
+		height: 40,
+	},
+	buttonText: {
+		color: "#fff",
+		fontSize: 18,
+	},
 });

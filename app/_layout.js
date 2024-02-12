@@ -1,7 +1,5 @@
 import { Stack } from "expo-router";
 import { StateMachineProvider, createStore } from "little-state-machine";
-import { AuthProvider } from "./context/AuthContext";
-import { AxiosProvider } from "./context/AxiosContext";
 
 createStore({});
 

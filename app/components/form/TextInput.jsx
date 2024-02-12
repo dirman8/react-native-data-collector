@@ -1,7 +1,8 @@
+import React from 'react';
 import { View, TextInput as RNTextInput, StyleSheet, Text } from 'react-native';
 import { useController, useFormContext } from 'react-hook-form';
 
-const ControllerInput = (props) => {  
+const ControllerInput = React.memo((props) => {  
   const formContext = useFormContext();
   const { formState} = formContext;
   
@@ -26,7 +27,6 @@ const ControllerInput = (props) => {
           {label && (<Text style={styles.label}>{label}</Text>)}
           <View style={{...styles.inputContainer}}>
               <RNTextInput
-                  autoCapitalize="none"
                   textAlign="left"
                   style={styles.input}
                   value={field.value}
@@ -47,9 +47,9 @@ const ControllerInput = (props) => {
         </View>
       </View>
   )
-}
+})
 
-export const TextInput = (props) => {
+export const TextInput = React.memo((props) => {
   const formContext = useFormContext();
   
   const {
@@ -72,7 +72,7 @@ export const TextInput = (props) => {
 
     return <ControllerInput {...props} />;
     
-}
+});
 
 const styles = StyleSheet.create({
   container: {

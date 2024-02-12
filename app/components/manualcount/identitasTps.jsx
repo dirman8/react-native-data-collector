@@ -4,24 +4,21 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { router, Stack, Link } from "expo-router";
 import { Picker } from '@react-native-picker/picker';
-import { useStateMachine } from 'little-state-machine';
 import { kelurahan, kecamatan } from '../../constants/dataKelurahan';
 import { tps } from '../../constants/tps';
-import updateForm from "../../components/form/updateForm";
+import { tpsStorage } from '../../utils/storage';
 
 
 export default function IdentitasTps({tingkat, bgcolor, title}) {
-    const {actions, state} = useStateMachine({updateForm});
     const {...methods} = useForm({mode: 'onChange'});
     
-    const [formUpdated, setFormUpdated] = useState(false);
     const [formError, setError] = useState(false);
     const [kecamatanPilihan, setKecamatanPilihan] = useState("Asemrowo");
     const [kelurahanPilihan, setKelurahanPilihan] = useState("Asemrowo");
     const [nomerTps, setNomerTps] = useState();
     const [nomerTpsPilihan, setNomerTpsPilihan] = useState();
 
-    console.log ("kecamatanPilihan :", kecamatanPilihan)
+    const identitasTps = {kecamatan:kecamatanPilihan, kelurahan:kelurahanPilihan, nomortps:nomerTpsPilihan}
 
     // Menggenerate nomer tps sebanyak jumlah tps dari masing-masing kelurahan yang dipilih
     const getNomerTps = () => {
@@ -34,34 +31,12 @@ export default function IdentitasTps({tingkat, bgcolor, title}) {
         } else {
             completeNumbers = numbers;
         }
-        console.log("completeNumbers :", completeNumbers);
         const stringNumbers = completeNumbers.map(number => number.toString());
         return stringNumbers
-    }
-
-    // const postForm = async () => {
-    //     try {
-    //         const response = await fetch("http://localhost:3000/api/tps", {
-    //                 method: "POST",
-	// 				headers: {
-    //                     "Content-Type": "application/json",
-	// 				},
-	// 				body: JSON.stringify(state),
-	// 			});
-    //             console.log("state from postForm : ", state);
-	// 			const data = await response.json();
-	// 			console.log("response status of fetching from goodForm : ", response.status);
-	// 		} catch (error) {
-    //             console.error("error from try Example page :", error);
-	// 		}
-	// 	};
-        
+    };
+    
     const onSubmit = () => {
-        actions.updateForm({
-            kecamatan: kecamatanPilihan,
-            kelurahan: kelurahanPilihan,
-            nomortps: nomerTpsPilihan
-        });
+        tpsStorage.set("identitasTps", JSON.stringify(identitasTps));
         setFormUpdated(true);
         // postForm();
         router.push(`/${tingkat}/Page1`);
@@ -72,14 +47,6 @@ export default function IdentitasTps({tingkat, bgcolor, title}) {
     }
 
     const navigation = useNavigation();
-
-    //     useEffect(() => {
-    //  if (formUpdated) {
-    //         console.log("prepare to postForm : ", state);
-    //         // postForm(); 
-    //         setFormUpdated(false);
-    //     }
-    // }, [formUpdated, state]);
 
     useEffect(() => {
         setNomerTps(getNomerTps());
@@ -185,11 +152,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         marginBottom: 10
     },
-    errorInput: {
-        color: 'red'
-    },
     pickerContainer:{
-        // backgroundColor:'#FFD93D',
         padding: 8,
         paddingBottom: 20,
         borderColor: 'white',

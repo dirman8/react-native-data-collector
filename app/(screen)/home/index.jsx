@@ -4,14 +4,12 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm } from 'react-hook-form';
 import { router, Stack, Link } from "expo-router";
 import { Picker } from '@react-native-picker/picker';
-import { useStateMachine } from 'little-state-machine';
 import { kelurahan, kecamatan } from '../../constants/dataKelurahan';
 import { tps } from '../../constants/tps';
-import updateForm from "../../components/form/updateForm";
+import { tpsStorage } from '../../utils/storage';
 
 
 export default function Home() {
-    const {actions, state} = useStateMachine({updateForm});
     const {...methods} = useForm({mode: 'onChange'});
     
     const [formUpdated, setFormUpdated] = useState(false);
@@ -19,6 +17,8 @@ export default function Home() {
     const [kecamatanPilihan, setKecamatanPilihan] = useState("Asemrowo");
     const [kelurahanPilihan, setKelurahanPilihan] = useState("Asemrowo");
     const [nomerTpsPilihan, setNomerTpsPilihan] = useState(1);
+
+    const identitasTps = {kecamatan:kecamatanPilihan, kelurahan:kelurahanPilihan, nomertps:nomerTpsPilihan}
    
     // Menggenerate nomer tps sebanyak jumlah tps dari masing-masing kelurahan yang dipilih
     const findValueByKey = (arr, key) => {
@@ -30,10 +30,16 @@ export default function Home() {
     return undefined; // Return undefined if the key is not found in any object
     }
     const getNomerTps = () => {
+        let completeNumbers = [];
         const jumlahTps = findValueByKey(tps[kecamatanPilihan], kelurahanPilihan)
         const numbers = Array.from({ length: jumlahTps }, (_, index) => index + 1);
+        if ((kecamatanPilihan === "Wonocolo" && kelurahanPilihan === "Siwalan Kerto") || (kecamatanPilihan === "Sukolilo" && kelurahanPilihan === "Keputih")) {
+            numbers.push(901, 902);
+        } else if ((kecamatanPilihan === "Jambangan" && kelurahanPilihan === "Jambangan") || (kecamatanPilihan === "Sambikerep" && kelurahanPilihan === "Sambikerep")) {
+            numbers.push(901);
+        }
         const stringNumbers = numbers.map(number => number.toString());
-        return stringNumbers
+        return stringNumbers;
     }
 
     // const postForm = async () => {
@@ -54,11 +60,7 @@ export default function Home() {
 	// 	};
         
     const onSubmit = () => {
-        actions.updateForm({
-            kecamatan: kecamatanPilihan,
-            kelurahan: kelurahanPilihan,
-            nomortps: nomerTpsPilihan
-        });
+        tpsStorage.set("identitasTps", JSON.stringify(identitasTps));
         setFormUpdated(true);
         // postForm();
         router.push(`/home/pilihTingkat`);

@@ -2,14 +2,14 @@ import { router, Stack } from 'expo-router';
 import { useState } from 'react';
 import { View, StyleSheet, Text, Button, SafeAreaView, ScrollView } from 'react-native';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useStateMachine } from 'little-state-machine';
-import updateForm from "../../components/form/updateForm"
 import { TextInput } from '../../components/form/TextInput';
 import { useNavigation } from '@react-navigation/native';
+import { kotaStorage, provinsiStorage, pusatStorage, pilpresStorage, tpsStorage, statusStorage } from '../../utils/storage';
 
 
-export default function ManualCount1B({tingkat, bgcolor, title}) {
-    const {actions, state} = useStateMachine({updateForm});
+
+export default function ManualCount1B({tingkat, storage, bgcolor, title}) {
+
     const {...methods} = useForm({mode: 'onChange'});
 
     const initDataPemilih = {
@@ -69,21 +69,16 @@ export default function ManualCount1B({tingkat, bgcolor, title}) {
     }
 
     const onSubmit = (data) => {
-        actions.updateForm({
+        const dataGabungan = {
             ...data, 
-            // phpdptlaki: phpDptLaki,
-            // phpdptperempuan: phpDptPerempuan,
             totalphpdpt: totalPhpDpt,
-            // phpdptblaki: phpDptbLaki,
-            // phpdptbperempuan: phpDptbPerempuan,
             totalphpdptb: totalPhpDptb,
-            // phpdpklaki: phpDpkLaki,
-            // phpdpkperempuan: phpDpkPerempuan,
             totalphpdpk: totalPhpDpk,
             totalphplaki: totalPhpLaki,
             totalphpperempuan: totalPhpPerempuan,
             totalphp: totalPhp
-        })
+        };
+        storage.set("hasilInputPage1B", JSON.stringify(dataGabungan));
         router.push(`/${tingkat}/Page2`)
     }
 

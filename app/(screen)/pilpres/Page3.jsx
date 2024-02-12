@@ -2,37 +2,49 @@ import { useState } from 'react';
 import { router, Stack } from 'expo-router';
 import { View, Text, SafeAreaView, StyleSheet, Button,  Image} from 'react-native';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useStateMachine } from 'little-state-machine';
-import updateForm from "../../components/form/updateForm"
 import { TextInput } from '../../components/form/TextInput';
 import { capres } from '../../constants/capres';
 import {COLORS} from "../../constants/theme";
+import { pilpresStorage} from '../../utils/storage';
+import { useNavigation } from '@react-navigation/native';
+import { totalStorage } from '../../utils/storage';
 
 export default function ManualCountPilpres3() {
-    // const {actions, state} = useStateMachine({deleteForm});
-    const {actions, state} = useStateMachine({updateForm});
     const {...methods} = useForm({mode: 'onChange'});
-    const [totalSuaraCapres, setTotalSuaraCapres] = useState();
+    const [totalSuaraCapres, setTotalSuaraCapres] = useState({capres1:0, capres2:0, capres3:0});
+    const [jumlahSuaraSah, setJumlahSuaraSah] = useState(0);
 
+    // Prepare readySuaraCapres
     const convertToObject = () => {
 		const keysArray = Object.keys(capres).filter((key) => !isNaN(key));
 		return keysArray.map((key) => ({ id: `capres${key}`, label: capres[key] }));
 	};
     const readyCapres = convertToObject();
-    console.log("readyCapres:", readyCapres)
+
+    const updateSuaraCapres = (text, name) => {
+        setTotalSuaraCapres((prevState) => ({
+        ...prevState,
+        [name]: text,
+        }));
+    };
+    // Convert totalSuaraCapres object to array
+    const totalSuaraCapresArray = Object.entries(totalSuaraCapres).map(([key, value]) => ({
+        name: key,
+        value: value
+    }));
  
     const onSubmit = (data) => {
-        actions.updateForm({
-            ...state,
-            ...data, 
-        });
-        // actions.deleteForm({ initial: 1 });
+        const sum = totalSuaraCapresArray.reduce((acc, currentValue) => acc + currentValue.value, 0);
+        totalStorage.set("total", JSON.stringify({total: sum}));
+        pilpresStorage.set("hasilInputPage3", JSON.stringify(data));
         router.replace('/pilpres/Page4');
     }
 
     const onError = (errors) => {
         console.log('errors',errors);
     }
+
+    const navigation = useNavigation();
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -67,6 +79,7 @@ export default function ManualCountPilpres3() {
                             rules={{ validate: { isNumber: (value) => !isNaN(value) && Number(value) <= 999, }, }}
                             color={COLORS.grayPilpres}
                             height={60}
+                            updateInput={updateSuaraCapres}
                         />
                     </View>
                 ))}
@@ -96,10 +109,12 @@ const styles = StyleSheet.create({
     },
     title: {
         flex: 1,
-        color: 'black',
+        color: '#4F200D',
         fontSize: 20, 
         fontWeight: 'bold',
         textAlign: 'center',
+        marginTop: 20,
+        marginBottom: 20,
   },
     button: {
         marginTop: 40,

@@ -2,14 +2,12 @@ import { useState } from 'react';
 import { router, Stack } from 'expo-router';
 import { View, Text, SafeAreaView, StyleSheet, Button, ScrollView, Image, Dimensions } from 'react-native';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useStateMachine } from 'little-state-machine';
-import updateForm from "../../components/form/updateForm"
 import { TextInput } from '../../components/form/TextInput';
 import ConvertToObject from '../../utils/convertToObject';
 import { useNavigation } from '@react-navigation/native';
+import { totalStorage } from '../../utils/storage';
 
-export default function ManualCount3({parties, tingkat, bgcolor, title}) {
-    const {actions, state} = useStateMachine({updateForm});
+export default function ManualCount3({parties, tingkat, storage, bgcolor, title}) {
     const {...methods} = useForm({mode: 'onChange'});
     const [totalSuaraPartai, setTotalSuaraPartai] = useState({});
     const [pageIndex, setPageIndex] = useState(0);
@@ -93,9 +91,8 @@ export default function ManualCount3({parties, tingkat, bgcolor, title}) {
     };
 
     const onSubmit = (data) => {
-        actions.updateForm({
-            ...data, 
-        });
+        storage.set("hasilInputPage3", JSON.stringify(data));
+        totalStorage.set("total", JSON.stringify(totalSuaraPartai));
         router.push(`/${tingkat}/Page4`);
     }
 

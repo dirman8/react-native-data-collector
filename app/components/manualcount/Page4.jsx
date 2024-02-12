@@ -3,65 +3,41 @@ import { View, StyleSheet, Text, Button, SafeAreaView, ScrollView } from 'react-
 import { useNavigation } from '@react-navigation/native';
 import { router, Stack} from 'expo-router';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useStateMachine } from 'little-state-machine';
 import { TextInput } from '../form/TextInput';
-import { pilpresStorage, pusatStorage, provinsiStorage, kotaStorage, statusStorage, tpsStorage } from '../../utils/storage';
-import deleteForm from "../../components/form/deleteForm";
-import StoreData2 from '../../utils/storeData2';
-import StoreData3 from '../../utils/storeData3';
-import SendToDb from '../../utils/sendToDb';
+import { totalStorage } from '../../utils/storage';
 
-export default function ManualCount4({parties, tingkat, bgcolor, title}) {
-    const {actions, state} = useStateMachine({deleteForm});
-    const {...methods} = useForm({mode: 'onChange'});
-
-    const initSuratSuara = {
-    sssah: 0,
-    sstidaksah: 0,
-    totalss: 0,
-}
-
-    const [dataPemilih, setDataPemilih] = useState(initSuratSuara);
+export default function ManualCount4({parties, tingkat, storage, bgcolor, title}) {
     const [totalSs, setTotalSs] = useState(0);
-    const [identitasTpsForStorage, setIdentitasTpsForStorage] = useState({kecamatan: "", kelurahan: "", nomortps: ""})
-    
+    const [totalSsTs, setTotalSsTs] = useState(0);
+
+    const {...methods} = useForm({mode: 'onChange'});
+    const serializedTotal = totalStorage.getString("total");
+
     const updateTotalSs = (text) => {
-        const sssah = methods.getValues("sssah");
         const sstidaksah = methods.getValues("sstidaksah");
-        const totalss = sssah + sstidaksah;
-        setTotalSs(totalss);
+        const totalss = totalSs + sstidaksah;
+        setTotalSsTs(totalss);
     }
 
-    const {kecamatan, kelurahan, nomortps} = state;
-    const identitasTps = {kecamatan:kecamatan, kelurahan:kelurahan, nomortps:nomortps}
+    useEffect(() => {
+        updateTotalSs();
+    //  calculateTotalSuaraPartai();
+       if (serializedTotal) {
+        const getTotal = JSON.parse(serializedTotal);
+        const calculateTotalSuaraPartai = () => {
+            const total = Object.values(getTotal).reduce((acc, curr) => acc + curr, 0)
+            setTotalSs(total);
+            return null
+        };
+        calculateTotalSuaraPartai();
+    } else {
+        console.log("serializedTotal doesn't exist")
+    }
+    }, [])
     
     const onSubmit = (data) => {
-        const fullState = {...state, ...data, totalss: totalSs};
-        console.log("fullState :", fullState);
-        console.log("identitasTps :", identitasTps);
-           tpsStorage.set("identitasTps", JSON.stringify(identitasTps));
-        if (tingkat === 'kota') {
-            // SendToDb(fullState);
-            const dataGabungan = StoreData2(fullState, parties)
-            kotaStorage.set("hasilKota", JSON.stringify(dataGabungan));
-            statusStorage.set('statuskota', true);
-            actions.deleteForm({ initial: 1 });
-        } else if (tingkat === 'provinsi') {
-            const dataGabungan = StoreData2(fullState, parties)
-            provinsiStorage.set("hasilProvinsi", JSON.stringify(dataGabungan));
-            statusStorage.set('statusprovinsi', true);
-            actions.deleteForm({ initial: 1 });
-        } else if (tingkat === 'pusat') {
-            const dataGabungan = StoreData2(fullState, parties)
-            pusatStorage.set("hasilPusat", JSON.stringify(dataGabungan));
-            statusStorage.set('statuspusat', true);
-            actions.deleteForm({ initial: 1 });
-        } else if (tingkat === 'pilpres') {
-            const dataGabungan = StoreData3(fullState, parties)
-            pilpresStorage.set("hasilPilpres", JSON.stringify(dataGabungan));
-            statusStorage.set('statuspilpres', true);
-            actions.deleteForm({ initial: 1 });
-        } 
+        const dataGabungan = {...data, sssah:totalSs, totalss: totalSsTs};
+        storage.set("hasilInputPage4", JSON.stringify(dataGabungan));
         router.push(`/${tingkat}/successpage`);
     }
 
@@ -70,11 +46,6 @@ export default function ManualCount4({parties, tingkat, bgcolor, title}) {
     }
 
     const navigation = useNavigation();
-
-    useEffect(() => {
-        setIdentitasTpsForStorage(identitasTps);
-    }, [])
-    
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -100,7 +71,7 @@ export default function ManualCount4({parties, tingkat, bgcolor, title}) {
                 <FormProvider {...methods} >
                     <View>  
                         <Text style={styles.title}>V. DATA SUARA SAH DAN TIDAK SAH</Text>
-                        <TextInput
+                        {/* <TextInput
                             name="sssah"
                             label="A. JUMLAH SELURUH SUARA SAH"
                             placeholder="000"
@@ -116,7 +87,12 @@ export default function ManualCount4({parties, tingkat, bgcolor, title}) {
                         />
                         {methods.formState.errors.dptlaki?.type === "isNumber" ?  
                         <Text style={styles.errorInput}>Input harus angka </Text> : null
-                        }
+                        } */}
+
+                        <View style={{...styles.specialContainer, backgroundColor: bgcolor}}>
+                            <Text style={{marginBottom: 10, color: "#4F200D"}}>A. JUMLAH SELURUH SUARA SAH </Text>
+                            <Text style={styles.specialText}>{totalSs}</Text>
+                        </View>
                         
                         <TextInput
                             name="sstidaksah"
@@ -139,7 +115,7 @@ export default function ManualCount4({parties, tingkat, bgcolor, title}) {
                         } 
                         <View style={{...styles.totalContainer, backgroundColor: bgcolor}}>
                             <Text style={{marginBottom: 10}}>C. JUMLAH SELURUH SUARA SAH DAN TIDAK SAH</Text>
-                            <Text style={styles.totalText}>{totalSs}</Text>
+                            <Text style={styles.totalText}>{totalSsTs}</Text>
                         </View>
                     </View>
                 </FormProvider>
@@ -169,6 +145,24 @@ const styles = StyleSheet.create({
         backgroundColor: '#F6F1E9',
         borderColor: 'white',
         borderWidth: 1,
+    },
+    specialContainer: {
+        flexDirection: 'row',
+        height: 60,
+        // backgroundColor: "#BDBDBD", 
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 8,
+    },
+    specialText: {
+        backgroundColor: 'white',
+        padding: 8,
+        height: 35,
+        width: 43,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 4,
+        
     },
     totalContainer: {
         height: 100,
@@ -208,4 +202,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#4F200D',
         borderRadius: 4,
   },
+    errorInput: {
+        color: 'red',
+    }
 })

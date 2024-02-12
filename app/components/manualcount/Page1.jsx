@@ -2,14 +2,10 @@ import { router, Stack } from 'expo-router';
 import { useState } from 'react';
 import { View, StyleSheet, Text, Button, SafeAreaView, ScrollView } from 'react-native';
 import { useForm, FormProvider } from 'react-hook-form';
-import { useStateMachine } from 'little-state-machine';
-import updateForm from "../../components/form/updateForm"
 import { TextInput } from '../../components/form/TextInput';
 import { useNavigation } from '@react-navigation/native';
 
-
-export default function ManualCount1({tingkat, bgcolor, title}) {
-    const {actions, state} = useStateMachine({updateForm});
+export default function ManualCount1({tingkat, storage, bgcolor, title}) {
     const {...methods} = useForm({mode: 'onChange'});
 
     const initDataPemilih = {
@@ -69,21 +65,16 @@ export default function ManualCount1({tingkat, bgcolor, title}) {
     }
 
     const onSubmit = (data) => {
-        actions.updateForm({
+        const dataGabungan = {
             ...data, 
-            dptlaki: dptLaki,
-            dptperempuan: dptPerempuan,
             totaldpt: totalDpt,
-            dptblaki: dptbLaki,
-            dptbperempuan: dptbPerempuan,
             totaldptb: totalDptb,
-            dpklaki: dpkLaki,
-            dpkperempuan:  dpkPerempuan,
             totaldpk: totalDpk,
             totaldplaki: totalDpLaki,
             totaldpperempuan: totalDpPerempuan,
             totaldp: totalDp
-        })
+        };
+        storage.set("hasilInputPage1", JSON.stringify(dataGabungan));
         router.push(`/${tingkat}/Page1B`)
     }
 

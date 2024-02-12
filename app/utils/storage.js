@@ -28,3 +28,7 @@ export const dapilStorage = new MMKV({
 	id: "dapil-storage",
 	// path: "../storage",
 });
+export const totalStorage = new MMKV({
+	id: "total-storage",
+	// path: "../storage",
+});

@@ -46,8 +46,8 @@ export default function PilihTingkat() {
 	const handleKota = () => {
 		router.push("/kota/Page1");
 	};
-	const gotoExcel = () => {
-		router.push("/excel");
+	const gotoHome = () => {
+		router.push("/home");
 	};
 
 	const logOut = () => {
@@ -60,14 +60,17 @@ export default function PilihTingkat() {
         dapilStorage.clearAll(); 
         router.replace("/home/login")
 	}
-	// const hapusStorage = () => {
-	// 	Alert.alert( 
-	// 		'Konfirmasi', 'Apakah anda ingin menghapus data yang telah anda input ?', 
-	// 		[ {text: 'Yes', onPress: () => {statusStorage.clearAll(); router.replace("/home")}}, 
-	// 		  {text: 'No', onPress: () => console.log('No Pressed'), style: 'cancel'}, ],
-	// 		{ cancelable: false }
-	// 	);
-	// };
+
+	const showAlertMessage = () => {
+	Alert.alert(
+		'Anda belum menyelesaikan input seluruh tingkat pemilihan',
+		'Mohon menyelesaikan seluruh input sebelum beralih ke TPS lain',
+		[
+		{ text: 'OK', onPress: () => console.log('OK Pressed') }
+		],
+		{ cancelable: false }
+	);
+	};
 
 	useEffect(() => {
 		// Check all the conditions and update isDisabled
@@ -125,9 +128,9 @@ export default function PilihTingkat() {
 				<View style={{ marginTop: 40 }}>
 					<TouchableOpacity
 						style={{ ...styles.button, backgroundColor: "#1d6c41" }}
-						onPress={isDisabled ? null : gotoExcel}
+						onPress={isDisabled ? showAlertMessage : gotoHome}
 					>
-						<Text style={styles.text}>Kirim File Excel</Text>
+						<Text style={styles.text}>Input TPS selanjutnya</Text>
 					</TouchableOpacity>
 				</View>
 				<View style={{ marginTop: 40 }}>
@@ -138,14 +141,6 @@ export default function PilihTingkat() {
 						<Text style={styles.text}>Log Out</Text>
 					</TouchableOpacity>
 				</View>
-				{/* <View style={{ marginTop: 40 }}>
-					<TouchableOpacity
-						style={{ ...styles.button, backgroundColor: "#FFA500" }}
-						onPress={hapusStorage}
-					>
-						<Text style={styles.text}>Hapus Storage</Text>
-					</TouchableOpacity>
-				</View> */}
 			</View>
 		</SafeAreaView>
 	);
