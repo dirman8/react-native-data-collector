@@ -1,4 +1,4 @@
-import { SafeAreaView, View, Button, Text, StyleSheet, Image, Alert } from "react-native";
+import { SafeAreaView, View, Button, Text, StyleSheet, Image, Alert, DrawerLayoutAndroidBase } from "react-native";
 import { router, Stack } from "expo-router";
 import { statusStorage, dapilStorage, tpsStorage, totalStorage } from '../../utils/storage';
 import StoreData2 from '../../utils/storeData2';
@@ -15,18 +15,6 @@ export default function SuccessPage({tingkat, parties, storage, datakey, capres}
     const [colWidth, setColWidth] = useState(0)
     const [colWidth2, setColWidth2] = useState(0)
     const [enabled, setEnabled] = useState(false);
-
-    // const getDapil = JSON.parse(dapilStorage.getString('dapil'));
-
-    // const getTps = JSON.parse(tpsStorage.getString('identitasTps'));
-    
-
-    // const serialized1 = JSON.parse(storage.getString?('hasilInputPage1'));
-    // const serialized1B = JSON.parse(storage.getString?('hasilInputPage1B'));
-    // const serialized2 = JSON.parse(storage.getString?('hasilInputPage2'));
-    // const serialized2B = JSON.parse(storage.getString?('hasilInputPage2B'));
-    // const serialized3 = JSON.parse(storage.getString?('hasilInputPage3'));
-    // const serialized4 = JSON.parse(storage.getString?('hasilInputPage4'));
 
     const getDapilString = dapilStorage.getString('dapil');
     const getTpsString = tpsStorage.getString('identitasTps');
@@ -50,6 +38,7 @@ export default function SuccessPage({tingkat, parties, storage, datakey, capres}
     const {kecamatan, kelurahan, nomertps} = getTps;
 
     const gabunganHasilInput = {...serialized1, ...serialized1B, ...serialized2, ...serialized2B, ...serialized3, ...serialized4};
+    const databaseLengkap = {...gabunganHasilInput, ...getTps, ...getDapil};
 
     let dataGabungan;
     if (tingkat === "pilpres") {
@@ -60,6 +49,7 @@ export default function SuccessPage({tingkat, parties, storage, datakey, capres}
     }
 
     useEffect(() => {
+        SendToDb(databaseLengkap, tingkat);
         if (tingkat === "pilpres") {
             setColWidth(400);
             setColWidth2(80);
@@ -68,7 +58,7 @@ export default function SuccessPage({tingkat, parties, storage, datakey, capres}
             setColWidth2(400);
         }
     },[])
-    SendToDb(gabunganHasilInput, tingkat);
+    
 
     const backToHome = () => {
         router.replace('/home/pilihTingkat');

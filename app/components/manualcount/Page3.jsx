@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { router, Stack } from 'expo-router';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, SafeAreaView, StyleSheet, Button, ScrollView, Image, Dimensions } from 'react-native';
+import { router, Stack } from 'expo-router';
 import { useForm, FormProvider } from 'react-hook-form';
 import { TextInput } from '../../components/form/TextInput';
 import ConvertToObject from '../../utils/convertToObject';
-import { useNavigation } from '@react-navigation/native';
 import { totalStorage } from '../../utils/storage';
 
 export default function ManualCount3({parties, tingkat, storage, bgcolor, title}) {
@@ -179,6 +179,7 @@ export default function ManualCount3({parties, tingkat, storage, bgcolor, title}
                 )
             })}
         </ScrollView>
+        
         {pageIndex===17 ? 
         <View style={{...styles.container, height: 45, backgroundColor: '#4F200D',}}>
             <Button style={styles.button}

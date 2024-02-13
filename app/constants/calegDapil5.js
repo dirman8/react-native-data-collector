@@ -65,7 +65,7 @@ const GOLKAR = {
 
 const NASDEM = {
 	nomer: 5,
-	nama: "NasDem",
+	nama: "NASDEM",
 	dapil: "DAPIL 5",
 	1: "HARI SANTOSA",
 	2: "NANIEK ZULFIANI, S.E., M.M",
@@ -81,7 +81,7 @@ const NASDEM = {
 
 const PARTAI_BURUH = {
 	nomer: 6,
-	nama: "Partai Buruh",
+	nama: "PARTAI_BURUH",
 	dapil: "DAPIL 5",
 	1: "MOCHAMAD YASIN",
 	2: "HERU SETIYAWAN",
@@ -97,7 +97,7 @@ const PARTAI_BURUH = {
 
 const GELORA = {
 	nomer: 7,
-	nama: "Partai Gelombang Rakyat Indonesia (Gelora)",
+	nama: "GELORA",
 	dapil: "DAPIL 5",
 	1: "ROBI FAJARILLAH R, S.T., M.M.",
 	2: "BUDI SANTOSO, S.H.",
@@ -113,7 +113,7 @@ const GELORA = {
 
 const PKS = {
 	nomer: 8,
-	nama: "Partai Keadilan Sejahtera (PKS)",
+	nama: "PKS",
 	dapil: "DAPIL 5",
 	1: "JOHARI MUSTAWAN, S.T.P., M.A.R.S.",
 	2: "Hj. RAHMAWATI, S.Sos.",
@@ -129,7 +129,7 @@ const PKS = {
 
 const PKN = {
 	nomer: 9,
-	nama: "Partai Kebangkitan Nusantara (PKN)",
+	nama: "PKN",
 	dapil: "DAPIL 5",
 	1: "TITALEY, ANNA MARIA JOSEPHINE",
 	2: "ZANUAR LINGGA PRATAMA",
@@ -137,7 +137,7 @@ const PKN = {
 
 const HANURA = {
 	nomer: 10,
-	nama: "Partai Hati Nurani Rakyat (Hanura)",
+	nama: "HANURA",
 	dapil: "DAPIL 5",
 	1: "MUSA SANJAYA",
 	2: "RUDY MARUDUT PANGIHUTAN",
@@ -153,7 +153,7 @@ const HANURA = {
 
 const PARTAI_GARUDA = {
 	nomer: 11,
-	nama: "PARTAI GARUDA",
+	nama: "PARTAI_GARUDA",
 	dapil: "DAPIL 5",
 	1: "AGUSTINUS SOARES, S.I.P.",
 	2: "WIDIA ARI S, S.H.I., M.H.I.",
@@ -260,7 +260,7 @@ const PPP = {
 
 const PARTAI_UMMAT = {
 	nomer: 24,
-	nama: "PARTAI UMMAT",
+	nama: "PARTAI_UMMAT",
 	dapil: "DAPIL 5",
 	1: "YUSUF, S.Sos., M.Pd.I",
 	2: "SYAMSUL ARIF, S.Pd.",

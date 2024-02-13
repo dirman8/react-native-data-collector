@@ -6,16 +6,7 @@ const ControllerInput = React.memo((props) => {
   const formContext = useFormContext();
   const { formState} = formContext;
   
-  const {
-      label,
-      name,
-      rules,
-      defaultValue,
-      updateInput,
-      color,
-      height,
-      ...inputProps
-  }= props;
+  const { label, name, rules, defaultValue, updateInput, color, height, ...inputProps }= props;
 
   const { field } = useController({name, rules, defaultValue:0})
 
@@ -35,7 +26,6 @@ const ControllerInput = React.memo((props) => {
                     field.onChange(isNumeric ? +text : text)
                     if (typeof updateInput === 'function') { updateInput(isNumeric ? +text : text, name); };
                   }}
-                  onBlur={field.onBlur}
                   {...inputProps}
               />
 
@@ -52,16 +42,7 @@ const ControllerInput = React.memo((props) => {
 export const TextInput = React.memo((props) => {
   const formContext = useFormContext();
   
-  const {
-      name,
-      label,
-      rules,
-      defaultValue,
-      setFormError,
-      color,
-      height,
-      ...inputProps
-  }= props;
+  const { name, label, rules, defaultValue, setFormError, color, height, ...inputProps }= props;
 
     if(!formContext || !name) {
         const msg = !formContext ? "TextInput must be wrapped by the FormProvider" : "Name must be defined"

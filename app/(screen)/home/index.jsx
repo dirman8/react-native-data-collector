@@ -41,23 +41,6 @@ export default function Home() {
         const stringNumbers = numbers.map(number => number.toString());
         return stringNumbers;
     }
-
-    // const postForm = async () => {
-    //     try {
-    //         const response = await fetch("http://localhost:3000/api/tps", {
-    //                 method: "POST",
-	// 				headers: {
-    //                     "Content-Type": "application/json",
-	// 				},
-	// 				body: JSON.stringify(state),
-	// 			});
-    //             console.log("state from postForm : ", state);
-	// 			const data = await response.json();
-	// 			console.log("response status of fetching from goodForm : ", response.status);
-	// 		} catch (error) {
-    //             console.error("error from try Example page :", error);
-	// 		}
-	// 	};
         
     const onSubmit = () => {
         tpsStorage.set("identitasTps", JSON.stringify(identitasTps));

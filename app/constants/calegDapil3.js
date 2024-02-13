@@ -65,7 +65,7 @@ const GOLKAR = {
 
 const NASDEM = {
 	nomer: 5,
-	nama: "NasDem",
+	nama: "NASDEM",
 	dapil: "DAPIL 3",
 	1: "DEDY SETIO, S.H., M.H.",
 	2: "LEA JULIANA, S.H., M.H.",
@@ -81,7 +81,7 @@ const NASDEM = {
 
 const PARTAI_BURUH = {
 	nomer: 6,
-	nama: "Partai Buruh",
+	nama: "PARTAI_BURUH",
 	dapil: "DAPIL 3",
 	1: "MAYNANG SUHARTANTO",
 	2: "HERI PRAMONO",
@@ -97,7 +97,7 @@ const PARTAI_BURUH = {
 
 const GELORA = {
 	nomer: 7,
-	nama: "Partai Gelombang Rakyat Indonesia (Gelora)",
+	nama: "GELORA",
 	dapil: "DAPIL 3",
 	1: "PRITA EKSIMANINGRUM, S.Psi.",
 	2: "MUCHAMAD AFIF",
@@ -113,7 +113,7 @@ const GELORA = {
 
 const PKS = {
 	nomer: 8,
-	nama: "Partai Keadilan Sejahtera (PKS)",
+	nama: "PKS",
 	dapil: "DAPIL 3",
 	1: "ANING RAHMAWATI, S.T.",
 	2: "Hj. drg. ENNY YEKTI K",
@@ -129,7 +129,7 @@ const PKS = {
 
 const PKN = {
 	nomer: 9,
-	nama: "Partai Kebangkitan Nusantara (PKN)",
+	nama: "PKN",
 	dapil: "DAPIL 3",
 	1: "SUHANTARI",
 	2: "DZURROTUL MAGHFIROH",
@@ -140,7 +140,7 @@ const PKN = {
 
 const HANURA = {
 	nomer: 10,
-	nama: "Partai Hati Nurani Rakyat (Hanura)",
+	nama: "HANURA",
 	dapil: "DAPIL 3",
 	1: "BUDI SANTOSO, S.E.",
 	2: "YOHANNES LODEWYK PELLETIMU",
@@ -154,7 +154,7 @@ const HANURA = {
 
 const PARTAI_GARUDA = {
 	nomer: 11,
-	nama: "PARTAI GARUDA",
+	nama: "PARTAI_GARUDA",
 	dapil: "DAPIL 3",
 	1: "PUTRA LINGGA TAN, S.H.",
 	2: "FONNY",
@@ -259,7 +259,7 @@ const PPP = {
 
 const PARTAI_UMMAT = {
 	nomer: 24,
-	nama: "PARTAI UMMAT",
+	nama: "PARTAI_UMMAT",
 	dapil: "DAPIL 3",
 	1: "INDAH MAFRUCHA",
 	2: "GUGUS LEGOWO, S.Pd., M.M.",
